@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$base-text: #3f4e58;
+$primary: #89aabd;
+$primary-accent: #7391a1;
+$destrutive: #bf0a30;
+$sandy: #e9d6ac;
+$confirm: #3a9a72;
+$call-to-action: #5b9bd5;
+
+body {
+  color: $base-text;
+}
+h1 {
+  font-size: 4em;
+  font-weight: 700;
+}
+#logo div {
+  color: $base-text;
+  font-size:1.4em;
+  font-weight: 00;
+}
+
+#footer div {
+    color:#ffffff;
+    font-weight: 600;
+    font-size:2em
+}
+
+
