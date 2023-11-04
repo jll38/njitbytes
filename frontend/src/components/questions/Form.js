@@ -70,7 +70,7 @@ function Form({ setQuizStatus }) {
       );
     case 1:
       return (
-        <div className="w-[40rem]  h-[40rem] pt-[5rem]">
+        <div className="w-[40rem]  h-[40rem]">
           <div className="flex flex-col gap-3">
             <div aria-label="name-question">
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
@@ -316,7 +316,7 @@ function Form({ setQuizStatus }) {
 
     case 2:
       return (
-        <div className="w-[40rem] flex flex-col gap-4 h-[40rem] pt-[5rem]">
+        <div className="w-[40rem] flex flex-col gap-4 h-[40rem]">
           <div aria-label="dietary-restrictions-question">
             <FormLabel sx={{ fontSize: "1.3em" }}>
               Dietary Restrictions?
