@@ -101,8 +101,6 @@ def main() -> None:
     lunch_menu = get_lunch()
     dinner_menu = get_dinner()
 
-    print(breakfast_menu)
-
 
 if __name__ == "__main__":
     main()
