@@ -51,13 +51,14 @@ def get_and_cache_menu(current_date: str):
     meal_periods: List[str] = list(MEAL_PERIOD_MAPPING.keys())
     for period in meal_periods:
         api_url: str = f"{api_base_url}{period}?platform=0&date={current_date}"
-        menu: Tuple[str, List[Dict[str, Any]]] = filter_food_items(api_url)
+        menu = filter_food_items(api_url)
         meal_name: str = MEAL_PERIOD_MAPPING.get(period, "")
         cached_data[meal_name] = menu
 
     return jsonify({"message": "Menu data updated successfully."}), 200
 
 
+'''
 @app.route("/update-menus", methods=["POST"])
 def update_buckets() -> None:
     """
@@ -67,10 +68,11 @@ def update_buckets() -> None:
         None
     """
     get_and_cache_menu(datetime.now(new_york).strftime("%Y-%m-%d"))
-    bucket = storage_client.get_bucket(bucket_name)
-    for meal_period, menu_data in cached_data.items():
-        blob = bucket.blob(f"{meal_period}/menu.json")
-        blob.upload_from_string(json.dumps(menu_data))
+    if cached_data:
+        bucket = storage_client.get_bucket(bucket_name)
+        for meal_period, menu_data in cached_data.items():
+            blob = bucket.blob(f"{meal_period}/menu.json")
+            blob.upload_from_string(json.dumps(menu_data))
 
 
 def get_bucket_data(meal_period: str):
@@ -97,6 +99,7 @@ def get_bucket_data(meal_period: str):
             return "Failed to update menu data. Please try again later."
 
     return json.loads(menu_data)
+'''
 
 
 def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
@@ -152,7 +155,11 @@ def get_menu_endpoint(meal_period: str):
     Returns:
         JSON response: The menu data or an error message.
     """
-    return get_bucket_data(meal_period)
+    menu = jsonify(cached_data.get(meal_period))
+    if not menu:
+        get_and_cache_menu(datetime.now(new_york).strftime("%Y-%m-%d"))
+        menu = jsonify(cached_data.get(meal_period))
+    return menu
 
 
 # Error handler for unauthorized access
