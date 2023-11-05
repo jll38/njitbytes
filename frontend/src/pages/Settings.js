@@ -18,19 +18,22 @@ export function Settings() {
         <Logo />
         <h2>Settings</h2>
         <div className="flex justify-center gap-4">
-          
           <Button
             variant="soft"
             className="h-[8rem] w-[8rem] flex flex-col"
             onClick={() => {
-              window.location.assign("/settings");
+              window.location.assign("/");
+              localStorage.clear();
             }}
             sx={{
               color: "text",
             }}
           >
             <SettingsIcon style={{ fontSize: "48px" }} />
-            <div>Clear</div>
+            <div
+            >
+              Erase User Information
+            </div>
           </Button>
         </div>
       </div>

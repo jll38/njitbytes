@@ -329,8 +329,8 @@ function Form({ setQuizStatus }) {
               size="lg"
               id="diet-restrictions"
             >
-              <div className="flex justify-between text-center">
-                {["Halal", "Vegan", "Gluten Free"].map((value) => (
+              <div className="flex justify-between text-center gap-4">
+                {["Halal", "Vegan", "Gluten Free","None"].map((value) => (
                   <Sheet
                     key={value}
                     sx={{
@@ -368,7 +368,7 @@ function Form({ setQuizStatus }) {
               id="diet-preferences"
             >
               <div className="flex justify-left gap-8 text-center">
-                {["Low Carb", "Low Fat"].map((value) => (
+                {["Low Carb", "Low Fat", "None"].map((value) => (
                   <Sheet
                     key={value}
                     sx={{
