@@ -13,10 +13,22 @@ $call-to-action: #5b9bd5;
 body {
   color: $base-text;
 }
+
 h1 {
   font-size: 4em;
   font-weight: 700;
 }
+
+h2 {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
 #logo div {
   color: $base-text;
   font-size:1.4em;
