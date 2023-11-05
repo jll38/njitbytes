@@ -9,7 +9,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { Menu } from "./Menu";
 
 export function Settings() {
+    if(localStorage.getItem("byte_quizStatus") === null) window.location.assign('/');
   return (
+    localStorage.getItem("byte_quizStatus") !== null ?
     <div>
       <div
         className="p-[4rem 
@@ -37,6 +39,6 @@ export function Settings() {
           </Button>
         </div>
       </div>
-    </div>
+    </div> : <></>
   );
 }

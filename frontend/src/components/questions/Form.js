@@ -18,6 +18,7 @@ function Form({ setQuizStatus }) {
   const [values, setValues] = useState({
     byte_name: localStorage.getItem("byte_name"),
     byte_age: localStorage.getItem("byte_age"),
+    byte_sex: localStorage.getItem("byte_sex"),
     byte_height_feet: localStorage.getItem("byte_height_feet"),
     byte_height_inches: localStorage.getItem("byte_height_inches"),
     byte_weight: localStorage.getItem("byte_weight"),
@@ -64,8 +65,7 @@ function Form({ setQuizStatus }) {
           onClick={() => {
             setQuizStep(quizStep + 1);
           }}
-          sx={{fontSize: "36px",
-        padding: "10px"}}
+          sx={{ fontSize: "36px", padding: "10px" }}
         >
           GET STARTED
         </Button>
@@ -84,7 +84,7 @@ function Form({ setQuizStatus }) {
                 }}
               />
             </div>
-            <div className="flex gap-8">
+            <div className="flex gap-[4.5rem]">
               <div className="flex gap-2">
                 <div>
                   <FormLabel
@@ -131,7 +131,7 @@ function Form({ setQuizStatus }) {
                   />
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex ">
                 <div>
                   <FormLabel
                     aria-label="age-question"
@@ -181,6 +181,45 @@ function Form({ setQuizStatus }) {
                   </div>
                 </div>
               </div>
+              <div aria-label="sex-question" className="">
+                <FormLabel sx={{ fontSize: "1.3em" }}>
+                  Sex
+                </FormLabel>
+                <RadioGroup
+                  aria-labelledby="goal-label"
+                  defaultValue={localStorage.getItem("byte_sex")}
+                  size="lg"
+                >
+                  <div className="flex center text-center">
+                    {["Male", "Female"].map(
+                      (value) => (
+                        <Sheet
+                          key={value}
+                          sx={{
+                            p: .8,
+                            borderRadius: "md",
+                            boxShadow: "sm",
+                            width: "150%",
+                          }}
+                        >
+                          <Radio
+                            id="sex"
+                            label={`${value}`}
+                            aria-label={`select-${value}`}
+                            overlay
+                            disableIcon
+                            value={value}
+                            onClick={(e) => {
+                              handleChange(e);
+                            }}
+                          />
+                        </Sheet>
+                      )
+                    )}
+                  </div>
+                </RadioGroup>
+              </div>
+              {/*here */}
             </div>
 
             <div aria-label="goal-question">
@@ -330,7 +369,7 @@ function Form({ setQuizStatus }) {
               id="diet-restrictions"
             >
               <div className="flex justify-between text-center gap-4">
-                {["Halal", "Vegan", "Gluten Free","None"].map((value) => (
+                {["Halal", "Vegan", "Gluten Free", "None"].map((value) => (
                   <Sheet
                     key={value}
                     sx={{
@@ -410,15 +449,13 @@ function Form({ setQuizStatus }) {
               variant="soft"
               aria-label="next-page-button"
               onClick={() => {
-                if (
-                  dietPreferences ===
-                    null ||
-                  dietPreferences === null
-                ) {
+                if (dietRestrictions === null || dietPreferences === null) {
                   setErrorState(
                     "Please fill out every question before continuing."
                   );
                 } else {
+                  localStorage.setItem("byte_restrictions", dietRestrictions);
+                  localStorage.setItem("byte_preferences", dietPreferences);
                   setQuizStatus(true);
                   localStorage.setItem("byte_quizStatus", true);
                   setErrorState(null);
