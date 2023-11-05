@@ -127,6 +127,7 @@ def get_menu_endpoint(meal_period: str) -> Tuple[str, int]:
         )
 
 
+
 # Error handler for unauthorized access
 @app.errorhandler(401)
 def unauthorized(e: Exception) -> Tuple[str, int]:
