@@ -13,7 +13,7 @@ export function Home({ quizStatus, setQuizStatus }) {
     <div>
       <div
         className={`p-[4rem ${
-          quizStatus ? "pt-[4rem]" : "pt-[16rem]"
+          quizStatus ? "pt-[4rem]" : "pt-[18rem]"
         } h-screen w-full flex flex-col justify-center items-center`}
       >
         <Logo />
