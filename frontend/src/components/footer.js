@@ -6,7 +6,7 @@ export function Footer({}) {
       id="footer"
       className="w-full absolute bottom-0 flex justify-center items-center"
     >
-      GDS is 
+
     </div>
   );
 }

@@ -16,7 +16,7 @@ export function Menu({}) {
     localStorage.getItem("byte_quizStatus") !== null ? (<div>
         <div className="p-[4rem] h-screen w-full flex flex-col justify-center items-center">
           <Logo />
-          <div className="mt-[20rem] w-full flex flex-col items-center justify-center">
+          <div className="mt-[30rem] w-full flex flex-col items-center justify-center">
           <div className="mb-[1rem]">Your recommended caloric intake is: {getDailyCals().totalCals} calories</div>
             <Tabs
               aria-label="Basic tabs"

@@ -63,13 +63,12 @@ export const getDailyCals = () => {
   console.log(goal)
   console.log(totalCals)
   if (goal === "Gain Weight") {
-    totalCals = Math.round(totalCals * 1.15);
+    totalCals = totalCals * 1.15;
   } else if (goal === "Lose Weight") {
-    totalCals = Math.round(totalCals - (totalCals * .13));
+    totalCals = totalCals - (totalCals * .13);
   } 
-  console.log(totalCals)
-  console.log("Type: " + typeof totalCals);
-  return { bmr: bmr, totalCals: totalCals };
+
+  return { bmr: bmr, totalCals: Math.floor(totalCals) };
 };
 
 const toKilo = (pounds) => {
