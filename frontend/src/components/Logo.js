@@ -4,7 +4,7 @@ import { isOpenNow } from "../utils/timehandler";
 export function Logo({}) {
   const isOpen = isOpenNow();
   return (
-    <a className="absolute top-[3rem]" href="/">
+    <a className="absolute  top-[3rem]" href="/">
       <div id="logo" className="flex flex-col items-center leading-10 ">
         <img
           className="mb-2"
@@ -13,7 +13,7 @@ export function Logo({}) {
           height={100}
           alt="njitbytes logo alt"
         ></img>
-        <h1>NJITBytes</h1>
+        <h1 className="text-[2em] sm:text-[4em]">NJITBytes</h1>
         <div>Healthier College Living</div>
         <Chip className="mt-4" startDecorator={<div
             className=" h-[10px] w-[10px] rounded-[4px]"

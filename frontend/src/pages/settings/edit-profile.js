@@ -1,13 +1,11 @@
 import React from "react";
-import Form from "../components/questions/Form";
 import { Button, Box } from "@mui/joy";
-import { Logo } from "../components/Logo";
-import { Footer } from "../components/footer";
+import { Logo } from "../../components/Logo";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from '@mui/icons-material/Person';
-import { Menu } from "./Menu";
 
-export function Settings() {
+
+export function EditProfile() {
     if(localStorage.getItem("byte_quizStatus") === null) window.location.assign('/');
   return (
     localStorage.getItem("byte_quizStatus") !== null ?
@@ -17,13 +15,14 @@ export function Settings() {
         h-screen w-full flex flex-col justify-center items-center"
       >
         <Logo />
-        <h2 className="mt-[8rem] md:mt-[6rem]">Settings</h2>
+        <h2 className="sm:mt-[4rem] md:mt-[6rem]">Edit Profile</h2>
         <div className="flex justify-center gap-4">
         <Button
             variant="soft"
             className="h-[8rem] w-[8rem] flex flex-col"
             onClick={() => {
-                window.location.assign("/");
+              window.location.assign("/");
+              localStorage.clear();
             }}
             sx={{
               color: "text",
