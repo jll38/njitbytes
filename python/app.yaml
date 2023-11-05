@@ -7,7 +7,8 @@ env_variables:
   API_BASE_URL: 'https://api.dineoncampus.com/v1/location/615f4f93a9f13a32678e5feb/periods/64ecff62351d53075fcb'
   GC_BUCKET_NAME: 'njitbytes-menus'
 
+instance_class: F2
+
 handlers:
 - url: /.*
   script: auto
-
