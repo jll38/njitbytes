@@ -109,7 +109,7 @@ export function Meals({}) {
         user.restrictions
       }. My dietary preference is the following: ${
         user.preferences
-      }. Give me 2 meal combinations from my dining hall menu, focus on high protein and give measurements for protein, carbs, fat, and calories (preferably at the start) and am looking to ${
+      }. Give me 2 meal combinations from my dining hall menu, focus on high protein and give measurements for protein, carbs, fat, and calories (preferably at the start) for the total meal, specify the serving per ingredient, and am looking to ${
         user.goal
       }. Here is the dining hall menu for ${selection}. ${JSON.stringify(
         bruh[1]
@@ -226,7 +226,7 @@ export function Meals({}) {
             Get Dinner Meal
           </Button>
         </div>
-        <div>
+        <div className="p-0 max-w-[80rem]">
           <pre>{responseData}</pre>
         </div>
       </div>
