@@ -72,7 +72,7 @@ function Form({ setQuizStatus }) {
       );
     case 1:
       return (
-        <div className="w-[40rem]  h-[40rem]">
+        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] md:mt-[6em] mb-[4em]">
           <div className="flex flex-col gap-3">
             <div aria-label="name-question">
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
@@ -84,7 +84,7 @@ function Form({ setQuizStatus }) {
                 }}
               />
             </div>
-            <div className="flex gap-[4.5rem]">
+            <div className="flex justify-between flex-col sm:flex-row items-center">
               <div className="flex gap-2">
                 <div>
                   <FormLabel
@@ -131,7 +131,7 @@ function Form({ setQuizStatus }) {
                   />
                 </div>
               </div>
-              <div className="flex ">
+              <div className="flex">
                 <div>
                   <FormLabel
                     aria-label="age-question"
@@ -357,7 +357,7 @@ function Form({ setQuizStatus }) {
 
     case 2:
       return (
-        <div className="w-[40rem] flex flex-col gap-4 h-[40rem]">
+        <div className="w-full  px-8 text-center md:text-left md:w-[40rem] flex flex-col gap-4 h-[40rem]">
           <div aria-label="dietary-restrictions-question">
             <FormLabel sx={{ fontSize: "1.3em" }}>
               Dietary Restrictions?
@@ -368,7 +368,7 @@ function Form({ setQuizStatus }) {
               size="lg"
               id="diet-restrictions"
             >
-              <div className="flex justify-between text-center gap-4">
+              <div className="flex sm:flex-row flex-col items-center text-center gap-4">
                 {["Halal", "Vegan", "Gluten Free", "None"].map((value) => (
                   <Sheet
                     key={value}
@@ -376,7 +376,7 @@ function Form({ setQuizStatus }) {
                       p: 2,
                       borderRadius: "md",
                       boxShadow: "sm",
-                      width: "30%",
+                      width: "100%",
                     }}
                   >
                     <Radio
@@ -406,7 +406,7 @@ function Form({ setQuizStatus }) {
               size="lg"
               id="diet-preferences"
             >
-              <div className="flex justify-left gap-8 text-center">
+              <div className="flex flex-col sm:flex-row justify-left gap-8 text-center">
                 {["Low Carb", "Low Fat", "None"].map((value) => (
                   <Sheet
                     key={value}
@@ -414,7 +414,7 @@ function Form({ setQuizStatus }) {
                       p: 2,
                       borderRadius: "md",
                       boxShadow: "sm",
-                      width: "30%",
+                      width: "100%",
                     }}
                   >
                     <Radio
