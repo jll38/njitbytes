@@ -14,8 +14,11 @@ body {
   color: $base-text;
 }
 
+pre {
+  white-space: pre-wrap;
+}
+
 h1 {
-  font-size: 4em;
   font-weight: 700;
 }
 
@@ -31,17 +34,15 @@ h3 {
 
 #logo div {
   color: $base-text;
-  font-size:1.4em;
+  font-size: 1.4em;
   font-weight: 00;
 }
-#error-message{
+#error-message {
   color: $destrutive;
 }
 
 #footer div {
-    color:#ffffff;
-    font-weight: 600;
-    font-size:2em
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 2em;
 }
-
-

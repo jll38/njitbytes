@@ -13,12 +13,12 @@ export function Home({ quizStatus, setQuizStatus }) {
     <div>
       <div
         className={`p-[4rem ${
-          quizStatus ? "pt-[4rem]" : "pt-[16rem]"
+          quizStatus ? "pt-[4rem]" : "pt-[18rem]"
         } h-screen w-full flex flex-col justify-center items-center`}
       >
         <Logo />
         {quizStatus ? (
-          <div className="text-center">
+          <div className="text-center mt-20 sm:mt-[6em] lg:mt-[4em]">
             <div className="leading-10">
               <h2>Welcome back, {JSON.parse(localStorage.getItem("byte_name"))}</h2>
               <div className="text-[1.25em]">What would you like to do?</div>
@@ -26,7 +26,7 @@ export function Home({ quizStatus, setQuizStatus }) {
             <div className="flex justify-center gap-4">
               <Button
                 variant="soft"
-                className="h-[8rem] w-[8rem] flex flex-col"
+                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
                 onClick={() => {
                   window.location.assign("/menu")
                 }}
@@ -39,7 +39,10 @@ export function Home({ quizStatus, setQuizStatus }) {
               </Button>
               <Button
                 variant="soft"
-                className="h-[8rem] w-[8rem] flex flex-col"
+                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
+                onClick={() => {
+                  window.location.assign("/meals")
+                }}
                 sx={{
                   color: "text",
                 }}
@@ -49,7 +52,7 @@ export function Home({ quizStatus, setQuizStatus }) {
               </Button>
               <Button
                 variant="soft"
-                className="h-[8rem] w-[8rem] flex flex-col"
+                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
                 onClick={() => {
                   window.location.assign("/settings")
                 }}

@@ -18,6 +18,7 @@ function Form({ setQuizStatus }) {
   const [values, setValues] = useState({
     byte_name: localStorage.getItem("byte_name"),
     byte_age: localStorage.getItem("byte_age"),
+    byte_sex: localStorage.getItem("byte_sex"),
     byte_height_feet: localStorage.getItem("byte_height_feet"),
     byte_height_inches: localStorage.getItem("byte_height_inches"),
     byte_weight: localStorage.getItem("byte_weight"),
@@ -64,32 +65,33 @@ function Form({ setQuizStatus }) {
           onClick={() => {
             setQuizStep(quizStep + 1);
           }}
-          sx={{fontSize: "36px",
-        padding: "10px"}}
+          sx={{ fontSize: "36px", padding: "10px" }}
         >
           GET STARTED
         </Button>
       );
     case 1:
       return (
-        <div className="w-[40rem]  h-[40rem]">
+        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] md:mt-[6em] mb-[4em]">
           <div className="flex flex-col gap-3">
             <div aria-label="name-question">
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
               <Input
                 id="name"
                 value={localStorage.getItem("age")}
+                autoComplete={'off'}
                 onChange={(e) => {
                   handleChange(e);
                 }}
               />
             </div>
-            <div className="flex gap-8">
+            <div className="flex justify-between flex-col sm:flex-row items-center">
               <div className="flex gap-2">
                 <div>
                   <FormLabel
                     aria-label="age-question"
                     sx={{ fontSize: "1.3em" }}
+                    
                   >
                     Age
                   </FormLabel>
@@ -98,6 +100,7 @@ function Form({ setQuizStatus }) {
                     type="number"
                     aria-label="age-question"
                     defaultValue={localStorage.getItem("byte_age")}
+                    autoComplete={'off'}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -114,6 +117,7 @@ function Form({ setQuizStatus }) {
                   <FormLabel sx={{ fontSize: "1.3em" }}>Weight</FormLabel>
                   <Input
                     id="weight"
+                    autoComplete={'off'}
                     type="number"
                     aria-label="weight-question"
                     defaultValue={localStorage.getItem("byte_weight")}
@@ -131,7 +135,7 @@ function Form({ setQuizStatus }) {
                   />
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex">
                 <div>
                   <FormLabel
                     aria-label="age-question"
@@ -181,6 +185,45 @@ function Form({ setQuizStatus }) {
                   </div>
                 </div>
               </div>
+              <div aria-label="sex-question" className="">
+                <FormLabel sx={{ fontSize: "1.3em" }}>
+                  Sex
+                </FormLabel>
+                <RadioGroup
+                  aria-labelledby="goal-label"
+                  defaultValue={localStorage.getItem("byte_sex")}
+                  size="lg"
+                >
+                  <div className="flex center text-center">
+                    {["Male", "Female"].map(
+                      (value) => (
+                        <Sheet
+                          key={value}
+                          sx={{
+                            p: .8,
+                            borderRadius: "md",
+                            boxShadow: "sm",
+                            width: "150%",
+                          }}
+                        >
+                          <Radio
+                            id="sex"
+                            label={`${value}`}
+                            aria-label={`select-${value}`}
+                            overlay
+                            disableIcon
+                            value={value}
+                            onClick={(e) => {
+                              handleChange(e);
+                            }}
+                          />
+                        </Sheet>
+                      )
+                    )}
+                  </div>
+                </RadioGroup>
+              </div>
+              {/*here */}
             </div>
 
             <div aria-label="goal-question">
@@ -318,7 +361,7 @@ function Form({ setQuizStatus }) {
 
     case 2:
       return (
-        <div className="w-[40rem] flex flex-col gap-4 h-[40rem]">
+        <div className="w-full  px-8 text-center md:text-left md:w-[40rem] flex flex-col gap-4 h-[40rem]">
           <div aria-label="dietary-restrictions-question">
             <FormLabel sx={{ fontSize: "1.3em" }}>
               Dietary Restrictions?
@@ -329,15 +372,15 @@ function Form({ setQuizStatus }) {
               size="lg"
               id="diet-restrictions"
             >
-              <div className="flex justify-between text-center">
-                {["Halal", "Vegan", "Gluten Free"].map((value) => (
+              <div className="flex sm:flex-row flex-col items-center text-center gap-4">
+                {["Halal", "Vegan", "Gluten Free", "None"].map((value) => (
                   <Sheet
                     key={value}
                     sx={{
                       p: 2,
                       borderRadius: "md",
                       boxShadow: "sm",
-                      width: "30%",
+                      width: "100%",
                     }}
                   >
                     <Radio
@@ -367,15 +410,15 @@ function Form({ setQuizStatus }) {
               size="lg"
               id="diet-preferences"
             >
-              <div className="flex justify-left gap-8 text-center">
-                {["Low Carb", "Low Fat"].map((value) => (
+              <div className="flex flex-col sm:flex-row justify-left gap-8 text-center">
+                {["Low Carb", "Low Fat", "None"].map((value) => (
                   <Sheet
                     key={value}
                     sx={{
                       p: 2,
                       borderRadius: "md",
                       boxShadow: "sm",
-                      width: "30%",
+                      width: "100%",
                     }}
                   >
                     <Radio
@@ -410,15 +453,13 @@ function Form({ setQuizStatus }) {
               variant="soft"
               aria-label="next-page-button"
               onClick={() => {
-                if (
-                  dietPreferences ===
-                    null ||
-                  dietPreferences === null
-                ) {
+                if (dietRestrictions === null || dietPreferences === null) {
                   setErrorState(
                     "Please fill out every question before continuing."
                   );
                 } else {
+                  localStorage.setItem("byte_restrictions", dietRestrictions);
+                  localStorage.setItem("byte_preferences", dietPreferences);
                   setQuizStatus(true);
                   localStorage.setItem("byte_quizStatus", true);
                   setErrorState(null);

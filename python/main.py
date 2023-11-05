@@ -228,3 +228,4 @@ def get_menu_endpoint(meal_period: str):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
