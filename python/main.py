@@ -50,19 +50,6 @@ def get_and_cache_menu(api_base_url: str, current_date: str) -> None:
         cached_menus[meal_name] = menu
 
 
-def get_menu(meal_period: str) -> Optional[Dict[str, Any]]:
-    """
-    Returns the cached menu for the specified meal period.
-
-    Args:
-        meal_period (str): The meal period identifier.
-
-    Returns:
-        dict or None: The menu data for the specified meal period or None if not available.
-    """
-    return cached_menus.get(meal_period, None)
-
-
 def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
     """
     Fetches and filters food items from an API.
@@ -116,16 +103,15 @@ def get_menu_endpoint(meal_period: str) -> Tuple[str, int]:
     Returns:
         JSON response: The menu data or an error message.
     """
-    menu_data = get_menu(meal_period)
+    menu_data = cached_menus.get(meal_period, None)
 
     if menu_data:
         return jsonify(menu_data), 200
     else:
-        return (
-            jsonify({"error": f"{meal_period.capitalize()} menu is not available"}),
-            404,
-        )
-
+        current_date: str = datetime.now().strftime("%Y-%m-%d")
+        api_base_url: str = os.environ.get("API_BASE_URL")
+        get_and_cache_menu(api_base_url, current_date)
+        return jsonify(menu_data), 200
 
 
 # Error handler for unauthorized access
@@ -144,7 +130,4 @@ def unauthorized(e: Exception) -> Tuple[str, int]:
 
 
 if __name__ == "__main__":
-    current_date: str = datetime.now().strftime("%Y-%m-%d")
-    api_base_url: str = "https://api.dineoncampus.com/v1/location/615f4f93a9f13a32678e5feb/periods/64ecff62351d53075fcb"
-    get_and_cache_menu(api_base_url, current_date)
-    app.run(host="0.0.0.0", port=8080)
+    app.run()
