@@ -34,11 +34,9 @@ export function Meals({}) {
       })
       .then((response) => {
         const res = response.data;
-        setBreakfast(res)
+        setBreakfast(res);
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -57,11 +55,9 @@ export function Meals({}) {
       })
       .then((response) => {
         const res = response.data;
-        setLunch(res)
+        setLunch(res);
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -80,11 +76,9 @@ export function Meals({}) {
       })
       .then((response) => {
         const res = response.data;
-        setDinner(res)
+        setDinner(res);
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   }, []);
   const openai = new OpenAI({
     apiKey: process.env.REACT_APP_GPT_API,
@@ -95,25 +89,31 @@ export function Meals({}) {
 
   const getResponse = async (selection) => {
     let menu;
-    if(selection === 'breakfast'){
-        menu = breakfast
-    } else if (selection === 'lunch'){
-        menu = lunch
-    } else{
-        menu = dinner
+    if (selection === "breakfast") {
+      menu = breakfast;
+    } else if (selection === "lunch") {
+      menu = lunch;
+    } else {
+      menu = dinner;
     }
     console.log("contacting openai...");
     const response = await openai.completions.create({
       model: "gpt-3.5-turbo-instruct",
-      prompt: `I am a ${user.age} year old ${user.sex}, standing at ${
-        user.heightFeet
-      }ft ${user.heightInches}in tall, weighing in at ${
+      prompt: `For your response, do not elaborate & keep it brief. I am a ${
+        user.age
+      } year old ${user.sex}, standing at ${user.heightFeet}ft ${
+        user.heightInches
+      }in tall, weighing in at ${
         user.weight
       } with a recommended caloric intake of ${getDailyCals()}.  My dietary restriction is the following: ${
         user.restrictions
       }. My dietary preference is the following: ${
         user.preferences
-      }. Don't elaborate, give me 1 meal combination from my dining hall menu, focus on high protein and give measurements for protein, carbs, fat, and calories (preferably at the start). Here is the dining hall menu for ${selection}. ${JSON.stringify(menu[1])}`,
+      }. Give me 2 meal combinations from my dining hall menu, focus on high protein and give measurements for protein, carbs, fat, and calories (preferably at the start) and am looking to ${
+        user.goal
+      }. Here is the dining hall menu for ${selection}. ${JSON.stringify(
+        bruh[1]
+      )}`,
       max_tokens: 200,
     });
     console.log(response.choices[0].text);
@@ -225,7 +225,9 @@ export function Meals({}) {
           >
             Get Dinner Meal
           </Button>
-          <div>{responseData}</div>
+        </div>
+        <div>
+          <pre>{responseData}</pre>
         </div>
       </div>
 
