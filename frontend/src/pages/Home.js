@@ -40,6 +40,9 @@ export function Home({ quizStatus, setQuizStatus }) {
               <Button
                 variant="soft"
                 className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
+                onClick={() => {
+                  window.location.assign("/meals")
+                }}
                 sx={{
                   color: "text",
                 }}
