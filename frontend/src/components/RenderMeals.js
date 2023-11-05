@@ -21,9 +21,7 @@ export function RenderMeals({ meal }) {
                         <div>{section["Item Name"]}</div>
                         <div className="flex gap-4">
                           <div>{section["Calories"]} Cal</div>
-                          <div>{}g Protein</div>
-                          <div>{}g Carb</div>
-                          <div>{}g Fat</div>
+
                         </div>
                       </div>
                       <div className="text-[.75em] opacity-75">
