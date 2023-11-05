@@ -9,7 +9,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { Menu } from "./Menu";
 
 export function Settings() {
+    if(localStorage.getItem("byte_quizStatus") === null) window.location.assign('/');
   return (
+    localStorage.getItem("byte_quizStatus") !== null ?
     <div>
       <div
         className="p-[4rem 
@@ -18,22 +20,25 @@ export function Settings() {
         <Logo />
         <h2>Settings</h2>
         <div className="flex justify-center gap-4">
-          
           <Button
             variant="soft"
             className="h-[8rem] w-[8rem] flex flex-col"
             onClick={() => {
-              window.location.assign("/settings");
+              window.location.assign("/");
+              localStorage.clear();
             }}
             sx={{
               color: "text",
             }}
           >
             <SettingsIcon style={{ fontSize: "48px" }} />
-            <div>Clear</div>
+            <div
+            >
+              Erase User Information
+            </div>
           </Button>
         </div>
       </div>
-    </div>
+    </div> : <></>
   );
 }
