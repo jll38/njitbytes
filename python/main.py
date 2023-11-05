@@ -1,10 +1,13 @@
 from datetime import datetime
 import os
 import requests
+import json
 from flask import Flask, jsonify
 from flask_basicauth import BasicAuth
 from dotenv import load_dotenv
-from typing import Any, List, Dict, Tuple, Optional
+from typing import Any, List, Dict, Tuple
+from google.cloud import storage
+import pytz
 
 load_dotenv()
 
@@ -13,13 +16,17 @@ MEAL_PERIOD_MAPPING = {
     "8f73": "lunch",
     "8f5b": "dinner",
 }
-cached_menus: Dict[str, Any] = {}
 
+cached_data: Dict[str, Any] = {}
+storage_client = storage.Client()
 app: Flask = Flask("NJIT Bytes")
 basic_auth: BasicAuth = BasicAuth(app)
+new_york = pytz.timezone("America/New_York")
 
 basic_auth_username: str = os.environ.get("BASIC_AUTH_USERNAME")
 basic_auth_password: str = os.environ.get("BASIC_AUTH_PASSWORD")
+bucket_name: str = os.environ.get("GC_BUCKET_NAME")
+api_base_url: str = os.environ.get("API_BASE_URL")
 
 if not basic_auth_username or not basic_auth_password:
     raise ValueError(
@@ -31,23 +38,65 @@ app.config["BASIC_AUTH_PASSWORD"] = basic_auth_password
 app.config["BASIC_AUTH_FORCE"] = True
 
 
-def get_and_cache_menu(api_base_url: str, current_date: str) -> None:
+def get_and_cache_menu(current_date: str):
     """
     Fetches menu data from an API, filters, and caches it.
 
     Args:
-        api_base_url (str): The base URL of the menu API.
         current_date (str): The current date in "YYYY-MM-DD" format.
 
     Returns:
-        None
+        JSON response: A message indicating whether the menu data was updated successfully.
     """
     meal_periods: List[str] = list(MEAL_PERIOD_MAPPING.keys())
     for period in meal_periods:
         api_url: str = f"{api_base_url}{period}?platform=0&date={current_date}"
         menu: Tuple[str, List[Dict[str, Any]]] = filter_food_items(api_url)
         meal_name: str = MEAL_PERIOD_MAPPING.get(period, "")
-        cached_menus[meal_name] = menu
+        cached_data[meal_name] = menu
+
+    return jsonify({"message": "Menu data updated successfully."}), 200
+
+
+@app.route("/update-menus", methods=["POST"])
+def update_buckets() -> None:
+    """
+    Updates the buckets with the cached menu data.
+
+    Returns:
+        None
+    """
+    get_and_cache_menu(datetime.now(new_york).strftime("%Y-%m-%d"))
+    bucket = storage_client.get_bucket(bucket_name)
+    for meal_period, menu_data in cached_data.items():
+        blob = bucket.blob(f"{meal_period}/menu.json")
+        blob.upload_from_string(json.dumps(menu_data))
+
+
+def get_bucket_data(meal_period: str):
+    """
+    Fetches and returns the menu data from the buckets. If the file is empty or doesn't exist,
+    triggers the update of menus.
+
+    Args:
+        meal_period (str): The meal period identifier (breakfast, lunch, dinner).
+
+    Returns:
+        json: The menu data or an error message.
+    """
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(f"{meal_period}/menu.json")
+    menu_data = blob.download_as_string()
+
+    if not menu_data:
+        update_menus_url = "https://api.njitbytes.co/update-menus"
+        response = requests.post(update_menus_url)
+        if response.status_code == 200:
+            return "Menu data updated successfully. Please retry to fetch the menu."
+        else:
+            return "Failed to update menu data. Please try again later."
+
+    return json.loads(menu_data)
 
 
 def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
@@ -91,27 +140,19 @@ def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
     return period_name, structured_data
 
 
-@app.route("/api/<meal_period>", methods=["GET"])
+@app.route("/<meal_period>", methods=["GET"])
 @basic_auth.required
-def get_menu_endpoint(meal_period: str) -> Tuple[str, int]:
+def get_menu_endpoint(meal_period: str):
     """
-    Endpoint to retrieve and return the cached menu for the specified meal period.
+    Endpoint to retrieve and return the menu for the specified meal period.
 
     Args:
-        meal_period (str): The meal period identifier.
+        meal_period (str): The meal period identifier (breakfast, lunch, dinner).
 
     Returns:
         JSON response: The menu data or an error message.
     """
-    menu_data = cached_menus.get(meal_period, None)
-
-    if menu_data:
-        return jsonify(menu_data), 200
-    else:
-        current_date: str = datetime.now().strftime("%Y-%m-%d")
-        api_base_url: str = os.environ.get("API_BASE_URL")
-        get_and_cache_menu(api_base_url, current_date)
-        return jsonify(menu_data), 200
+    return get_bucket_data(meal_period)
 
 
 # Error handler for unauthorized access
