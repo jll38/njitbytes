@@ -4,23 +4,36 @@
 
 # NJITBytes
 
-<div align="center">
-  NJITBytes is an innovative hackathon project that taps into the New Jersey Institute of Technology's dining hall menu API to provide custom and personalized meal plans for students and faculty. With the power of AI integration, our platform analyzes the dining hall's offerings and tailors meal suggestions to meet the dietary preferences, restrictions, and goals of each individual user.
-</div>
+Welcome to NJITBytes! This innovative hackathon project is designed to revolutionize the dining experience at the New Jersey Institute of Technology by leveraging the university's dining hall menu API. NJITBytes aims to provide custom and personalized meal plans for students and faculty, ensuring that each meal caters to individual dietary preferences, restrictions, and goals with the help of AI integration.
 
 ## Team Members
-<div align="center">
-  - Julian Lechner
-  - Vladimir Gutierrez
-  - Andrew Dragoslavic
-  - Benjamin McCabe
-</div>
+NJITBytes is brought to you by a team of talented individuals passionate about enhancing the dining experience at NJIT:
+- Julian Lechner
+- Vladimir Gutierrez
+- Andrew Dragoslavic
+- Benjamin McCabe
 
-## Features
-<div align="center">
-  - **Dining Hall Menu API Integration:** Fetches the latest menu from NJIT dining services.
-  - **Personalized Meal Planning:** Custom meal plans that align with user dietary needs, preferences, and objectives.
-  - **Nutritional Insights:** Provides nutritional information for better meal choices.
-  - **User-Friendly Interface:** Easy navigation and interactive design to enhance user experience.
-  - **Feedback System:** Users can rate meals and offer feedback for continuous AI learning and improvement.
-</div>
+## Key Features
+
+NJITBytes is packed with features that enhance the dining experience at NJIT:
+
+### Dining Hall Menu API Integration
+- NJITBytes seamlessly connects to the NJIT dining services' API to fetch the latest dining hall menu. This ensures that users always have access to up-to-date information on the available dishes.
+
+### Personalized Meal Planning
+- NJITBytes offers personalized meal plans tailored to the unique dietary needs, preferences, and objectives of each user. Whether you're a carnivore, vegetarian, or have specific dietary restrictions, our platform will help you make meal choices that align with your lifestyle.
+
+### Nutritional Insights
+- Making informed decisions about your meals is essential for maintaining a healthy diet. NJITBytes provides valuable nutritional information for each dish, allowing users to make choices that suit their nutritional goals.
+
+### User-Friendly Interface
+- We believe that a user-friendly interface is key to a great user experience. NJITBytes boasts an intuitive and interactive design, ensuring that users can navigate the platform with ease and satisfaction.
+
+### Feedback System
+- NJITBytes is built on continuous improvement. We encourage users to rate their meals and provide feedback. This feedback loop enables our AI system to learn and adapt, ensuring that your dining experience gets better with time.
+
+## Get Started with NJITBytes
+
+NJITBytes is here to make your dining experience at NJIT more enjoyable and tailored to your needs. Whether you're a student with specific dietary preferences or a faculty member with unique dietary requirements, NJITBytes has you covered.
+
+Stay tuned for updates and enjoy a personalized dining experience like never before with NJITBytes!
