@@ -1,5 +1,6 @@
 import { Home } from "./pages/Home";
 import { Menu } from "./pages/Menu";
+import { Settings } from "./pages/Settings";
 import logo from "./logo.svg";
 import "./App.scss";
 import { extendTheme, CssVarsProvider } from "@mui/joy/styles";
@@ -53,6 +54,7 @@ function App() {
               }
             />
             <Route path="menu" element={<Menu />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
