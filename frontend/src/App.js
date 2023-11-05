@@ -44,7 +44,9 @@ function App() {
 
   return (
     <CssVarsProvider theme={theme}>
-      <header className="App-header"></header>
+      <header className="App-header">
+        <link rel="manifest" href="/manifest.json" />
+      </header>
       <BrowserRouter>
         <Routes>
           <Route path="/">
@@ -56,7 +58,7 @@ function App() {
             />
             <Route path="menu" element={<Menu />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="settings/edit-profile" element={<EditProfile/>} />
+            <Route path="settings/edit-profile" element={<EditProfile />} />
           </Route>
         </Routes>
       </BrowserRouter>
