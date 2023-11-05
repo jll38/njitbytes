@@ -27,6 +27,9 @@ export function Home({ quizStatus, setQuizStatus }) {
               <Button
                 variant="soft"
                 className="h-[8rem] w-[8rem] flex flex-col"
+                onClick={() => {
+                  window.location.assign("/menu")
+                }}
                 sx={{
                   color: "text",
                 }}
@@ -47,6 +50,9 @@ export function Home({ quizStatus, setQuizStatus }) {
               <Button
                 variant="soft"
                 className="h-[8rem] w-[8rem] flex flex-col"
+                onClick={() => {
+                  window.location.assign("/settings")
+                }}
                 sx={{
                   color: "text",
                 }}
