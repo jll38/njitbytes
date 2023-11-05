@@ -79,6 +79,7 @@ function Form({ setQuizStatus }) {
               <Input
                 id="name"
                 value={localStorage.getItem("age")}
+                autoComplete={'off'}
                 onChange={(e) => {
                   handleChange(e);
                 }}
@@ -90,6 +91,7 @@ function Form({ setQuizStatus }) {
                   <FormLabel
                     aria-label="age-question"
                     sx={{ fontSize: "1.3em" }}
+                    
                   >
                     Age
                   </FormLabel>
@@ -98,6 +100,7 @@ function Form({ setQuizStatus }) {
                     type="number"
                     aria-label="age-question"
                     defaultValue={localStorage.getItem("byte_age")}
+                    autoComplete={'off'}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -114,6 +117,7 @@ function Form({ setQuizStatus }) {
                   <FormLabel sx={{ fontSize: "1.3em" }}>Weight</FormLabel>
                   <Input
                     id="weight"
+                    autoComplete={'off'}
                     type="number"
                     aria-label="weight-question"
                     defaultValue={localStorage.getItem("byte_weight")}

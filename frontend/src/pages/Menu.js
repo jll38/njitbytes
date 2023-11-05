@@ -33,10 +33,12 @@ export function Menu({}) {
       })
       .then((response) => {
         const res = response.data;
+        console.log(res);
         setBreakfast(res)
       })
       .catch((error) => {
         
+
 
       });
   }, []);
