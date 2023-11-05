@@ -29,9 +29,6 @@ NJITBytes is packed with features that enhance the dining experience at NJIT:
 ### User-Friendly Interface
 - We believe that a user-friendly interface is key to a great user experience. NJITBytes boasts an intuitive and interactive design, ensuring that users can navigate the platform with ease and satisfaction.
 
-### Feedback System
-- NJITBytes is built on continuous improvement. We encourage users to rate their meals and provide feedback. This feedback loop enables our AI system to learn and adapt, ensuring that your dining experience gets better with time.
-
 ## Get Started with NJITBytes
 
 NJITBytes is here to make your dining experience at NJIT more enjoyable and tailored to your needs. Whether you're a student with specific dietary preferences or a faculty member with unique dietary requirements, NJITBytes has you covered.
