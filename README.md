@@ -1,6 +1,6 @@
 # NJITBytes
 
-<img src="https://github.com/jll38/njithacks-njitbytes/assets/17418847/ee62697a-8ee3-4f34-8dbc-18222ed1b058" alt="NJITBytes Logo" width="200">
+<img src="https://github.com/jll38/njithacks-njitbytes/assets/17418847/ee62697a-8ee3-4f34-8dbc-18222ed1b058" alt="NJITBytes Logo" width="400">
 
 Welcome to NJITBytes! This innovative hackathon project is designed to improve the dining experience at the New Jersey Institute of Technology by leveraging the university's dining hall menu API. NJITBytes aims to provide custom and personalized meal plans for all NJIT GDS goers, ensuring that each meal caters to individual dietary preferences, restrictions, and goals with the help of AI integration.
 
