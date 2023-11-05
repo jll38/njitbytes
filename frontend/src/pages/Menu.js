@@ -20,9 +20,9 @@ export function Menu({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://njitbytes.co/api/breakfast";
+      url = "https://corsproxy.io/?https://api.njitbytes.co/breakfast";
     } else {
-      url = "https://njitbytes.co/api/breakfast";
+      url = "https://api.njitbytes.co/breakfast";
     }
     axios
       .get(url, {
@@ -36,7 +36,7 @@ export function Menu({}) {
         setBreakfast(res)
       })
       .catch((error) => {
-        console.log(error);
+        
 
       });
   }, []);
@@ -44,9 +44,9 @@ export function Menu({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://njitbytes.co/api/lunch";
+      url = "https://corsproxy.io/?https://api.njitbytes.co/lunch";
     } else {
-      url = "https://njitbytes.co/api/lunch";
+      url = "https://api.njitbytes.co/lunch";
     }
     axios
       .get(url, {
@@ -60,7 +60,6 @@ export function Menu({}) {
         setLunch(res)
       })
       .catch((error) => {
-        console.log(error);
 
       });
   }, []);
@@ -68,9 +67,9 @@ export function Menu({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://njitbytes.co/api/dinner";
+      url = "https://corsproxy.io/?https://api.njitbytes.co/dinner";
     } else {
-      url = "https://njitbytes.co/api/dinner";
+      url = "https://api.njitbytes.co/dinner";
     }
     axios
       .get(url, {
@@ -84,7 +83,7 @@ export function Menu({}) {
         setDinner(res)
       })
       .catch((error) => {
-        console.log(error);
+
 
       });
   }, []);
