@@ -13,31 +13,13 @@ export const getDailyCals = () => {
   const rawHeightFeet = localStorage.getItem("byte_height_feet");
   const rawHeightInches = localStorage.getItem("byte_height_inches");
 
-  console.log({ rawAge, rawWeight, rawHeightFeet, rawHeightInches });
-
   const age = parseInt(JSON.parse(rawAge));
   const weight = parseInt(JSON.parse(rawWeight));
   const heightFeet = parseInt(JSON.parse(rawHeightFeet));
   const heightInches = parseInt(JSON.parse(rawHeightInches));
 
-  console.log({ age, weight, heightFeet, heightInches });
 
-  console.log(
-    age +
-      " " +
-      typeof age +
-      weight +
-      " " +
-      typeof weight +
-      " " +
-      heightFeet +
-      " " +
-      typeof heightFeet +
-      " " +
-      heightInches +
-      " " +
-      typeof heightInches
-  );
+
   if (activity === "Moderately Active with Moderate exercise 3-5 days a week") {
     multiplier = MODERATE;
   } else if (activity === "Sedentary with Little or no exercise") {
@@ -47,10 +29,8 @@ export const getDailyCals = () => {
   }
   let additional;
   if (sex === "Male") {
-    console.log("dude");
     additional = 5;
   } else {
-    console.log("duden't");
     additional = -161;
   }
   bmr = Math.round(
@@ -60,8 +40,7 @@ export const getDailyCals = () => {
       additional
   );
   let totalCals = bmr * multiplier;
-  console.log(goal)
-  console.log(totalCals)
+
   if (goal === "Gain Weight") {
     totalCals = totalCals * 1.15;
   } else if (goal === "Lose Weight") {
