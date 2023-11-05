@@ -4,7 +4,8 @@ import requests
 from flask import Flask, jsonify
 from flask_basicauth import BasicAuth
 from dotenv import load_dotenv
-from typing import Any, List, Dict, Tuple, Optional
+from typing import Any, List, Dict, Tuple
+from google.cloud import storage
 
 load_dotenv()
 
@@ -15,11 +16,13 @@ MEAL_PERIOD_MAPPING = {
 }
 cached_menus: Dict[str, Any] = {}
 
+storage_client = storage.Client()
 app: Flask = Flask("NJIT Bytes")
 basic_auth: BasicAuth = BasicAuth(app)
 
 basic_auth_username: str = os.environ.get("BASIC_AUTH_USERNAME")
 basic_auth_password: str = os.environ.get("BASIC_AUTH_PASSWORD")
+bucket_name: str = os.environ.get("GC_BUCKET_NAME")
 
 if not basic_auth_username or not basic_auth_password:
     raise ValueError(
@@ -48,6 +51,11 @@ def get_and_cache_menu(api_base_url: str, current_date: str) -> None:
         menu: Tuple[str, List[Dict[str, Any]]] = filter_food_items(api_url)
         meal_name: str = MEAL_PERIOD_MAPPING.get(period, "")
         cached_menus[meal_name] = menu
+
+        bucket = storage_client.get_bucket(bucket_name)
+        blob = bucket.blob(f"{meal_name}/menu.json")
+        menu_json = jsonify(menu)
+        blob.upload_from_string(menu_json)
 
 
 def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
@@ -91,25 +99,43 @@ def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
     return period_name, structured_data
 
 
-@app.route("/api/<meal_period>", methods=["GET"])
+def get_menu_from_bucket(menu_name: str) -> dict:
+    """
+    Retrieves menu data from Google Cloud Storage bucket.
+
+    Args:
+        menu_name (str): The name of the menu (breakfast, lunch, dinner).
+
+    Returns:
+        dict: The menu data.
+    """
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(f"{menu_name}/menu.json")
+    menu_json = blob.download_as_text()
+    return jsonify(menu_json)
+
+
+@app.route("/<meal_period>", methods=["GET"])
 @basic_auth.required
 def get_menu_endpoint(meal_period: str) -> Tuple[str, int]:
     """
-    Endpoint to retrieve and return the cached menu for the specified meal period.
+    Endpoint to retrieve and return the menu for the specified meal period.
 
     Args:
-        meal_period (str): The meal period identifier.
+        meal_period (str): The meal period identifier (breakfast, lunch, dinner).
 
     Returns:
         JSON response: The menu data or an error message.
     """
-    menu_data = cached_menus.get(meal_period, None)
+    menu_data = get_menu_from_bucket(meal_period)
 
     if menu_data:
         return jsonify(menu_data), 200
     else:
         current_date: str = datetime.now().strftime("%Y-%m-%d")
         api_base_url: str = os.environ.get("API_BASE_URL")
+        api_url: str = f"{api_base_url}{meal_period}?platform=0&date={current_date}"
+        menu_data = filter_food_items(api_url)
         get_and_cache_menu(api_base_url, current_date)
         return jsonify(menu_data), 200
 
