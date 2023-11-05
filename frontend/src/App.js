@@ -22,12 +22,18 @@ function App() {
           primary: {
             main: "#89aabd",
           },
+          text: {
+            main: "#3f4e58",
+          },
         },
       },
       dark: {
         palette: {
           primary: {
             main: "#89aabd",
+          },
+          text: {
+            main: "#3f4e58",
           },
         },
       },
@@ -40,12 +46,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home quizStatus={quizStatus} setQuizStatus={setQuizStatus} />} />
-            <Route path="menu" element={<Menu/>} />
+            <Route
+              index
+              element={
+                <Home quizStatus={quizStatus} setQuizStatus={setQuizStatus} />
+              }
+            />
+            <Route path="menu" element={<Menu />} />
           </Route>
         </Routes>
       </BrowserRouter>
-      
     </CssVarsProvider>
   );
 }

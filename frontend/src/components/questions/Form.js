@@ -64,6 +64,8 @@ function Form({ setQuizStatus }) {
           onClick={() => {
             setQuizStep(quizStep + 1);
           }}
+          sx={{fontSize: "36px",
+        padding: "10px"}}
         >
           GET STARTED
         </Button>
