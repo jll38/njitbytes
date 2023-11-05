@@ -25,8 +25,8 @@ export const isOpenNow = () => {
     
     const currentDay = dayNames[now.getDay()];
     if (now >= currentDay.open && now <= currentDay.close) {
-      return {message: 'The Dining Hall is Open', color: '#3A9A72'}
+      return {message: 'GDS is Open', color: '#3A9A72'}
     } else {
-      return {message: 'The Dining Hall is Closed', color: '#BF0A30'};
+      return {message: 'GDS is Closed', color: '#BF0A30'};
     }
   };
