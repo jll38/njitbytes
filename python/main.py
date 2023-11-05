@@ -15,39 +15,21 @@ def get_and_cache_menu(api_base_url: str, current_date: str) -> None:
     """
     meal_periods = ["8f7d", "8f73", "8f5b"]  # Breakfast, Lunch, and Dinner
     for period in meal_periods:
-        api_url = api_base_url + period + "?platform=0&date=" + current_date
+        api_url = f"{api_base_url}{period}?platform=0&date={current_date}"
         menu = filter_food_items(api_url)
         cached_menus[period] = menu
 
 
-def get_breakfast():
+def get_menu(meal_period: str):
     """
-    Retrieves the cached breakfast menu.
+    Retrieves the cached specified menu.
 
     Returns:
-        cached_menus.get("8f7d", None): The breakfast menu data or None if not cached.
+        cached_menus.get(meal_period, None): The specified menu data or None if not cached.
     """
-    return cached_menus.get("8f7d", None)
-
-
-def get_lunch():
-    """
-    Retrieves the cached lunch menu.
-
-    Returns:
-        cached_menus.get("8f73", None): The lunch menu data or None if not cached.
-    """
-    return cached_menus.get("8f73", None)
-
-
-def get_dinner():
-    """
-    Retrieves the cached dinner menu.
-
-    Returns:
-        cached_menus.get("8f5b", None): The dinner menu data or None if not cached.
-    """
-    return cached_menus.get("8f5b", None)
+    if meal_period not in ["8f7d", "8f73", "8f5b"]:
+        raise ValueError("Invalid meal period. Can only be one of [8f7d, 8f73, 8f5b]")
+    return cached_menus.get(meal_period, None)
 
 
 def filter_food_items(api_url: str):
@@ -97,9 +79,9 @@ def main() -> None:
 
     get_and_cache_menu(api_base_url, current_date)
 
-    breakfast_menu = get_breakfast()
-    lunch_menu = get_lunch()
-    dinner_menu = get_dinner()
+    breakfast_menu = get_menu("8f7d")
+    lunch_menu = get_menu("8f73")
+    dinner_menu = get_menu("8f5b")
 
     print(breakfast_menu)
 
