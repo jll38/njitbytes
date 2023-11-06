@@ -22,7 +22,7 @@ export const getDailyCals = () => {
 
   if (activity === "Moderately Active with Moderate exercise 3-5 days a week") {
     multiplier = MODERATE;
-  } else if (activity === "Sedentary with Little or no exercise") {
+  } else if (activity === "Little or no exercise") {
     multiplier = SEDENTARY;
   } else {
     multiplier = ACTIVE;
