@@ -38,7 +38,7 @@ app.config["BASIC_AUTH_PASSWORD"] = basic_auth_password
 app.config["BASIC_AUTH_FORCE"] = True
 
 
-def get_and_cache_menu(current_date: str):
+def get_and_cache_menu(current_date: str) -> Tuple[str, int]:
     """
     Fetches menu data from an API, filters, and caches it.
 
@@ -59,7 +59,7 @@ def get_and_cache_menu(current_date: str):
 
 
 @app.route("/update-menus", methods=["POST"])
-def update_buckets() -> None:
+def update_buckets():
     """
     Updates the buckets with the cached menu data.
 
@@ -71,6 +71,8 @@ def update_buckets() -> None:
     for meal_period, menu_data in cached_data.items():
         blob = bucket.blob(f"{meal_period}/menu.json")
         blob.upload_from_string(json.dumps(menu_data))
+
+    return jsonify({"message": "Menu data updated successfully."}), 200
 
 
 def get_bucket_data(meal_period: str):
@@ -89,7 +91,9 @@ def get_bucket_data(meal_period: str):
     menu_data = blob.download_as_string()
 
     if not menu_data:
-        update_menus_url = "https://api.njitbytes.co/update-menus"
+        # If the JSON file is empty or doesn't exist, trigger the update
+        # of menus by calling the /update-menus endpoint.
+        update_menus_url = "/update-menus"  # Replace with the actual URL
         response = requests.post(update_menus_url)
         if response.status_code == 200:
             return "Menu data updated successfully. Please retry to fetch the menu."
