@@ -2,10 +2,10 @@ runtime: python39
 entrypoint: gunicorn -b :$PORT main:app
 
 env_variables:
-  BASIC_AUTH_USERNAME: 'njitbytes'
-  BASIC_AUTH_PASSWORD: 'hacknjit2019'
-  API_BASE_URL: 'https://api.dineoncampus.com/v1/location/615f4f93a9f13a32678e5feb/periods/64ecff62351d53075fcb'
-  GC_BUCKET_NAME: 'njitbytes-menus'
+  BASIC_AUTH_USERNAME: $BASIC_AUTH_USERNAME
+  BASIC_AUTH_PASSWORD: $BASIC_AUTH_PASSWORD
+  API_BASE_URL: $API_BASE_URL
+  GC_BUCKET_NAME: $GC_BUCKET_NAME
 
 instance_class: F2
 
