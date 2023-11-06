@@ -65,7 +65,11 @@ function Form({ setQuizStatus }) {
           onClick={() => {
             setQuizStep(quizStep + 1);
           }}
-          sx={{ fontSize: "36px", padding: "10px" }}
+          sx={{
+            fontSize: "36px",
+            padding: "10px",
+            marginTop: "-150px",
+          }}
         >
           GET STARTED
         </Button>
@@ -277,7 +281,7 @@ function Form({ setQuizStatus }) {
                 <div className="flex justify-between text-center">
                   {[
                     {
-                      title: "Sedentary",
+                      title: "Not Active",
                       description: "Little or no exercise",
                     },
                     {
