@@ -6,6 +6,8 @@ export function RenderMeals({ meal }) {
       <h2>{meal[0]}</h2>
       <div className="flex flex-col gap-[.4rem]">
         {meal[1].map((section, i) => {
+          if(section.items.length === 0)return null
+
           return (
             <>
               <h3 key={"breakfast-section-" + i}>
