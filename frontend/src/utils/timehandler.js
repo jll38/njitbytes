@@ -28,13 +28,29 @@ const openHours = [
 export const isOpenNow = () => {
     let now = new Date();
     const currentDayOfWeek = now.getDay();
+    const currentHour = now.getHours();
 
-    const openTime = getDayWithTime(currentDayOfWeek, openHours[currentDayOfWeek].open, 0);
-    const closeTime = getDayWithTime(currentDayOfWeek, openHours[currentDayOfWeek].close, 0);
-    
-    if (now >= openTime && now < closeTime) {
-        return { message: 'GDS is Open', color: '#3A9A72' };
-    } else {
-        return { message: 'GDS is Closed', color: '#BF0A30' };
+    // Define the serving time ranges
+    const breakfastTimeRange = { start: 7, end: 10 };
+    const brunchTimeRange = { start: 10, end: 12 };
+    const lunchTimeRange = { start: 12, end: 17 };
+    const dinnerTimeRange = { start: 17, end: 22 };
+
+    const openingTime = openHours[currentDayOfWeek].open;
+    const closingTime = openHours[currentDayOfWeek].close;
+
+    if (currentHour >= openingTime && currentHour < closingTime) {
+        if (currentHour >= breakfastTimeRange.start && currentHour < breakfastTimeRange.end) {
+            return { message: 'Breakfast is being served 🥞', color: '#3A9A72' };
+        } else if (currentHour >= brunchTimeRange.start && currentHour < brunchTimeRange.end) {
+            return { message: 'Brunch is being served 🥞', color: '#3A9A72' };
+        } else if (currentHour >= lunchTimeRange.start && currentHour < lunchTimeRange.end) {
+            return { message: 'Lunch is being served 🍔', color: '#3A9A72' };
+        } else if (currentHour >= dinnerTimeRange.start && currentHour < dinnerTimeRange.end) {
+            return { message: 'Dinner is being served 🍽️', color: '#3A9A72' };
+        }
     }
+
+    return { message: 'GDS is Closed', color: '#BF0A30' };
 };
+
