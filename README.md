@@ -5,10 +5,10 @@
 
 # NJITBytes
 
-Welcome to NJITBytes! This innovative hackathon project is designed to revolutionize the dining experience at the New Jersey Institute of Technology by leveraging the university's dining hall menu API. NJITBytes aims to provide custom and personalized meal plans for students and faculty, ensuring that each meal caters to individual dietary preferences, restrictions, and goals with the help of AI integration.
+Welcome to NJITBytes! This innovative hackathon project is designed to improve the dining experience at the New Jersey Institute of Technology by leveraging the university's dining hall menu API. NJITBytes aims to provide custom and personalized meal plans for students and faculty, ensuring that each meal caters to individual dietary preferences, restrictions, and goals with the help of AI integration.
 
 ## Team Members
-NJITBytes is brought to you by a team of talented individuals passionate about enhancing the dining experience at NJIT:
+NJITBytes is brought to you by a team of current NJIT students:
 - Julian Lechner
 - Vladimir Gutierrez
 - Andrew Dragoslavic
