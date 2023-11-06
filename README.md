@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="[https://github.com/jll38/njithacks-njitbytes/assets/17418847/ee62697a-8ee3-4f34-8dbc-18222ed1b058](https://github.com/jll38/njithacks-njitbytes/assets/17418847/f5915663-209b-4b12-8c4f-702225f34d5f](https://github.com/jll38/njithacks-njitbytes/assets/17418847/6ac8862b-4981-471a-8d6f-67b700ad55ea)" alt="NJITBytes Logo" width="200">
+  <img src="https://github.com/jll38/njithacks-njitbytes/assets/17418847/ee62697a-8ee3-4f34-8dbc-18222ed1b058" alt="NJITBytes Logo" width="200">
 </div>
-
 
 # NJITBytes
 
