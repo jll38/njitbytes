@@ -1,5 +1,6 @@
 import { Home } from "./pages/Home";
 import { Menu } from "./pages/Menu";
+import { CaloricInfo } from "./pages/CaloricInfo";
 import { Settings } from "./pages/Settings";
 import { EditProfile } from "./pages/settings/edit-profile";
 import { Meals } from "./pages/Meals";
@@ -61,6 +62,7 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="settings/edit-profile" element={<EditProfile />} />
             <Route path="meals" element={<Meals/>} />
+            <Route path="caloric-information" element={<CaloricInfo/>} />
           </Route>
         </Routes>
       </BrowserRouter>
