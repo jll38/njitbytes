@@ -219,7 +219,7 @@ export function Meals({}) {
     <div>
       <div className="p-[1rem] sm:p-[4rem] h-screen w-full flex flex-col items-center">
         <Logo />
-        <div className="mt-[20rem] sm:mt-[12rem]"></div>
+        <div className="mt-[24rem] sm:mt-[16rem]"></div>
         <div className="sm:mt-[5rem] w-full flex items-center gap-4 justify-center">
           <Button
             onClick={() => {
@@ -251,14 +251,14 @@ export function Meals({}) {
         </div>
         <div className="w-full flex justify-center p-[2em]">
           <div className="flex w-[75%] justify-around">
-            <>
-              <Card
-                variant="outlined"
-                sx={{ width: 343, display: "flex", gap: 2 }}
-              >
-                <Typography>
-                  {responseData &&
-                    responseData.meal.map((ingredientObject) => {
+            {responseData && (
+              <>
+                <Card
+                  variant="outlined"
+                  sx={{ width: 343, display: "flex", gap: 2 }}
+                >
+                  <Typography>
+                    {responseData.meal.map((ingredientObject) => {
                       const ingredient = ingredientObject.ingredient;
                       const data = [
                         ["Macros", "Grams"],
@@ -296,24 +296,20 @@ export function Meals({}) {
                             <div className="flex items-center gap-2">
                               <div className="w-[4px] h-[4px] bg-[#3366cc]"></div>
                               {Number.parseInt(ingredient.protein) *
-                                Number.parseInt(
-                                  ingredient["num_servings"]
-                                )}g
-                              Protein
+                                Number.parseInt(ingredient["num_servings"])}
+                              g Protein
                             </div>
                             <div className="flex items-center gap-2">
                               <div className="w-[4px] h-[4px] bg-[#dc3911]"></div>
                               {Number.parseInt(ingredient.carbs) *
-                                Number.parseInt(
-                                  ingredient["num_servings"]
-                                )}g Carbs
+                                Number.parseInt(ingredient["num_servings"])}
+                              g Carbs
                             </div>
                             <div className="flex items-center gap-2">
                               <div className="w-[4px] h-[4px] bg-[#ff9900]"></div>
                               {Number.parseInt(ingredient.fat) *
-                                Number.parseInt(
-                                  ingredient["num_servings"]
-                                )}g Fat 
+                                Number.parseInt(ingredient["num_servings"])}
+                              g Fat
                             </div>
                           </div>
                           <div className="-mt-10 -ml-[0rem]  ">
@@ -336,13 +332,15 @@ export function Meals({}) {
                         </div>
                       );
                     })}
-                  <div>{macros.calories} Calories</div>
-                  <div>{macros.protein}g Protein</div>
-                  <div>{macros.carbs}g Carbs</div>
-                  <div>{macros.fat}g Fat</div>
-                </Typography>
-              </Card>
-            </>
+                    <div>{macros.calories} Calories</div>
+                    <div>{macros.protein}g Protein</div>
+                    <div>{macros.carbs}g Carbs</div>
+                    <div>{macros.fat}g Fat</div>
+                  </Typography>
+                </Card>
+              </>
+            )}
+
             {loading && <div>Loading...</div>}
             {errorState && (
               <div className="text-destructive">X {errorState}</div>

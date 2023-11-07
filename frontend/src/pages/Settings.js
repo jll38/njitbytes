@@ -17,7 +17,7 @@ export function Settings() {
         h-screen w-full flex flex-col justify-center items-center"
       >
         <Logo />
-        <h2 className="mt-[8rem] md:mt-[6rem]">Settings</h2>
+        <div className="mt-[10rem] md:mt-[12rem]"></div>
         <div className="flex justify-center gap-4">
         <Button
             variant="soft"
