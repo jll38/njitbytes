@@ -1,12 +1,7 @@
 import { Logo } from "./../components/Logo";
 import React from "react";
-import axios from "axios";
-import { Chart } from "react-google-charts";
-import Snackbar from "@mui/joy/Snackbar";
 import { Typography, Button } from "@mui/joy";
-import { useState, useEffect } from "react";
 import { getDailyCals } from "../utils/macros";
-import OpenAI from "openai";
 
 export function CaloricInfo({}) {
   return (
