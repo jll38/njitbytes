@@ -4,6 +4,7 @@ import requests
 import json
 from flask import Flask, jsonify
 from flask_basicauth import BasicAuth
+from flask_cors import CORS
 from dotenv import load_dotenv
 from typing import Any, List, Dict, Tuple
 from google.cloud import storage
@@ -20,6 +21,7 @@ MEAL_PERIOD_MAPPING = {
 cached_data: Dict[str, Any] = {}
 storage_client = storage.Client()
 app: Flask = Flask("NJIT Bytes")
+CORS(app)
 basic_auth: BasicAuth = BasicAuth(app)
 new_york = pytz.timezone("America/New_York")
 
