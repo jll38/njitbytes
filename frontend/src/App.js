@@ -3,6 +3,8 @@ import { Menu } from "./pages/Menu";
 import { CaloricInfo } from "./pages/CaloricInfo";
 import { Settings } from "./pages/Settings";
 import { EditProfile } from "./pages/settings/edit-profile";
+import { FavoriteItemsPage } from "./pages/settings/FavoriteMenuItems";
+
 import { Meals } from "./pages/Meals";
 import logo from "./logo.svg";
 import "./App.scss";
@@ -29,6 +31,9 @@ function App() {
           text: {
             main: "#3f4e58",
           },
+          destructive: {
+            main: "#bf0a30",
+          },
         },
       },
       dark: {
@@ -38,6 +43,9 @@ function App() {
           },
           text: {
             main: "#3f4e58",
+          },
+          destructive: {
+            main: "#bf0a30",
           },
         },
       },
@@ -60,9 +68,10 @@ function App() {
             />
             <Route path="menu" element={<Menu />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="menu/favorites" element={<FavoriteItemsPage />} />
             <Route path="settings/edit-profile" element={<EditProfile />} />
-            <Route path="meals" element={<Meals/>} />
-            <Route path="caloric-information" element={<CaloricInfo/>} />
+            <Route path="meals" element={<Meals />} />
+            <Route path="caloric-information" element={<CaloricInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>
