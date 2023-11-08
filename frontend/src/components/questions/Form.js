@@ -76,7 +76,7 @@ function Form({ setQuizStatus }) {
       );
     case 1:
       return (
-        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] md:mt-[6em] mb-[4em]">
+        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] sm:mt-[14em] pb-[4em]">
           <div className="flex flex-col gap-3">
             <div aria-label="name-question">
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
@@ -365,7 +365,7 @@ function Form({ setQuizStatus }) {
 
     case 2:
       return (
-        <div className="w-full  px-8 text-center md:text-left md:w-[40rem] flex flex-col gap-4 h-[40rem]">
+        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] sm:mt-[8em] pb-[4em]">
           <div aria-label="dietary-restrictions-question">
             <FormLabel sx={{ fontSize: "1.3em" }}>
               Dietary Restrictions?
@@ -443,7 +443,7 @@ function Form({ setQuizStatus }) {
             <div id="error-message">{errorState}</div>
           </div>
 
-          <div className="w-full flex justify-between">
+          <div className="w-full flex justify-between mt-4">
             <Button
               variant="soft"
               aria-label="previous-page-button"
