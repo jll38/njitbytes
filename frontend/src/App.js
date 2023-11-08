@@ -31,6 +31,9 @@ function App() {
           text: {
             main: "#3f4e58",
           },
+          destructive: {
+            main: "#bf0a30",
+          },
         },
       },
       dark: {
@@ -40,6 +43,9 @@ function App() {
           },
           text: {
             main: "#3f4e58",
+          },
+          destructive: {
+            main: "#bf0a30",
           },
         },
       },
@@ -62,10 +68,10 @@ function App() {
             />
             <Route path="menu" element={<Menu />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="menu/favorites" element={<FavoriteItemsPage/>} />
+            <Route path="menu/favorites" element={<FavoriteItemsPage />} />
             <Route path="settings/edit-profile" element={<EditProfile />} />
-            <Route path="meals" element={<Meals/>} />
-            <Route path="caloric-information" element={<CaloricInfo/>} />
+            <Route path="meals" element={<Meals />} />
+            <Route path="caloric-information" element={<CaloricInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>
