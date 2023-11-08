@@ -1,5 +1,8 @@
+import { MenuItem } from './MenuItem';
 import React from "react";
-export function RenderMeals({ meal }) {
+
+export function RenderMeals({ meal, favorites }) {
+  
   return (
     <>
       {" "}
@@ -19,16 +22,7 @@ export function RenderMeals({ meal }) {
                 {meal[1][i].items.map((section, j) => {
                   return (
                     <li key={"breakfast-item-" + j}>
-                      <div className="flex md:flex-row flex-col justify-between">
-                        <div>{section["Item Name"]}</div>
-                        <div className="flex gap-4">
-                          <div>{section["Calories"]} Cal</div>
-
-                        </div>
-                      </div>
-                      <div className="text-[.75em] opacity-75">
-                        Serving Size: {section["Portion"]}
-                      </div>
+                      <MenuItem favorites={favorites} section={section}/>
                     </li>
                   );
                 })}

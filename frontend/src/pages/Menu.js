@@ -12,6 +12,17 @@ export function Menu({}) {
   const [breakfast, setBreakfast] = useState(null);
   const [lunch, setLunch] = useState(null);
   const [dinner, setDinner] = useState(null);
+  let favorites = localStorage.getItem("byte_favorite_items");
+  if (favorites) {
+    if (favorites.includes(",")) {
+      favorites = favorites.split(",");
+    } else {
+      favorites = [favorites];
+    }
+  } else{
+    favorites = [];
+  }
+
   useEffect(() => {
     if (localStorage.getItem("byte_quizStatus") === null)
       window.location.assign("/");
@@ -34,13 +45,9 @@ export function Menu({}) {
       .then((response) => {
         const res = response.data;
         console.log(res);
-        setBreakfast(res)
+        setBreakfast(res);
       })
-      .catch((error) => {
-        
-
-
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -59,11 +66,9 @@ export function Menu({}) {
       })
       .then((response) => {
         const res = response.data;
-        setLunch(res)
+        setLunch(res);
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -82,12 +87,9 @@ export function Menu({}) {
       })
       .then((response) => {
         const res = response.data;
-        setDinner(res)
+        setDinner(res);
       })
-      .catch((error) => {
-
-
-      });
+      .catch((error) => {});
   }, []);
 
   return localStorage.getItem("byte_quizStatus") !== null ? (
@@ -97,8 +99,9 @@ export function Menu({}) {
         <div className="mt-[22rem] sm:mt-[14rem]"></div>
         <div className="sm:mt-[5rem] w-full flex flex-col items-center justify-center">
           <div className="mb-[1rem] text-center text-[.85em]">
-            Your recommended caloric intake is: <a href="/caloric-information" className="underline">{getDailyCals().totalCals}{" "}
-            calories
+            Your recommended caloric intake is:{" "}
+            <a href="/caloric-information" className="underline">
+              {getDailyCals().totalCals} calories
             </a>
           </div>
           <Tabs
@@ -115,13 +118,15 @@ export function Menu({}) {
               <Tab sx={{ color: "#3F4E58" }}>Dinner</Tab>
             </TabList>
             <TabPanel value={0}>
-                {breakfast && <RenderMeals meal={breakfast} />}
+              {breakfast && (
+                <RenderMeals meal={breakfast} favorites={favorites} />
+              )}
             </TabPanel>
             <TabPanel value={1}>
-              {lunch && <RenderMeals meal={lunch} />}
+              {lunch && <RenderMeals meal={lunch} favorites={favorites} />}
             </TabPanel>
             <TabPanel value={2}>
-              {dinner && <RenderMeals meal={dinner} />}
+              {dinner && <RenderMeals meal={dinner} favorites={favorites} />}
             </TabPanel>
           </Tabs>
         </div>
