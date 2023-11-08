@@ -5,7 +5,7 @@ import { getDailyCals } from "../utils/macros";
 
 export function CaloricInfo({}) {
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col items-center">
+    <div className="min-h-screen flex flex-col items-center">
       <Logo />
       <div className="mt-[20rem]"></div>
       <div className="mt-12 text-center px-4">

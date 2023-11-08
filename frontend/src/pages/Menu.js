@@ -3,25 +3,17 @@ import { Footer } from "./../components/footer";
 import { Logo } from "./../components/Logo";
 import axios from "axios";
 import React from "react";
-import { bruh, bruh_lunch } from "../tmp";
+
 import { Tabs, TabList, Tab, TabPanel } from "@mui/joy";
 import { useState, useEffect } from "react";
-import { getDailyCals } from "../utils/macros";
+import { getDailyCals, } from "../utils/macros";
+import { getFavoriteArr } from "../utils/userinfo";
 
 export function Menu({}) {
   const [breakfast, setBreakfast] = useState(null);
   const [lunch, setLunch] = useState(null);
   const [dinner, setDinner] = useState(null);
-  let favorites = localStorage.getItem("byte_favorite_items");
-  if (favorites) {
-    if (favorites.includes(",")) {
-      favorites = favorites.split(",");
-    } else {
-      favorites = [favorites];
-    }
-  } else{
-    favorites = [];
-  }
+  let favorites = getFavoriteArr();
 
   useEffect(() => {
     if (localStorage.getItem("byte_quizStatus") === null)

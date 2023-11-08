@@ -5,6 +5,8 @@ import { Logo } from "../components/Logo";
 import { Footer } from "../components/footer";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from '@mui/icons-material/Person';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import { Menu } from "./Menu";
 
 export function Settings() {
@@ -33,6 +35,22 @@ export function Settings() {
             <div
             >
               Edit Profile
+            </div>
+          </Button>
+          <Button
+            variant="soft"
+            className="h-[8rem] w-[8rem] flex flex-col"
+            onClick={() => {
+              window.location.assign("/menu/favorites");
+            }}
+            sx={{
+              color: "text",
+            }}
+          >
+            <FavoriteIcon style={{ fontSize: "48px" }} />
+            <div
+            >
+              Favorite <br/>Menu Items
             </div>
           </Button>
           <Button

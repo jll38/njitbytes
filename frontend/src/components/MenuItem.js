@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "@mui/joy";
 import { useState } from "react";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import StarIcon from "@mui/icons-material/Star";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export function MenuItem({ favorites, section }) {
   const [favoriteIcon, toggleFavorite] = useState(
@@ -34,7 +34,7 @@ export function MenuItem({ favorites, section }) {
           <Button
             className="relative bottom-1"
             variant="text"
-            startDecorator={favoriteIcon ? <StarIcon /> : <StarBorderIcon />}
+            startDecorator={favoriteIcon ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             onClick={() => {
               handleFavorite();
             }}
