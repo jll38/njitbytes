@@ -20,7 +20,7 @@ MEAL_PERIOD_MAPPING = {
 
 cached_data: Dict[str, Any] = {}
 storage_client = storage.Client()
-app: Flask = Flask("NJIT Bytes")
+app: Flask = Flask(__name__)
 CORS(app)
 basic_auth: BasicAuth = BasicAuth(app)
 new_york = pytz.timezone("America/New_York")
@@ -146,63 +146,6 @@ def filter_food_items(api_url: str) -> Tuple[str, List[Dict[str, Any]]]:
         structured_data.append(category_info)
 
     return period_name, structured_data
-
-  
-@app.route("/get-filtered-food-items")
-def get_filtered_food_items():
-    current_time = datetime.now(new_york).time()
-    # current_date = datetime.now(new_york).strftime("%Y-%m-%d")
-    current_time = datetime.now(new_york).time()
-    now = datetime.now(new_york)
-    breakfast_menu = json.loads(read_from_bucket("breakfast_menu.json"))
-    lunch_menu = json.loads(read_from_bucket("lunch_menu.json"))
-    dinner_menu = json.loads(read_from_bucket("dinner_menu.json"))
-
-    if 0 <= now.weekday() <= 4:
-        if (
-            datetime.strptime("07:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("09:59:59", "%H:%M:%S").time()
-        ):
-            return breakfast_menu
-        elif (
-            datetime.strptime("10:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("15:59:59", "%H:%M:%S").time()
-        ):
-            return lunch_menu
-        elif (
-            datetime.strptime("16:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("22:00:00", "%H:%M:%S").time()
-        ):
-            return dinner_menu
-        else:
-            print("GDS is closed :(")
-            return json.dumps({})
-
-    else:
-        if (
-            datetime.strptime("10:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("11:59:59", "%H:%M:%S").time()
-        ):
-            return breakfast_menu
-        elif (
-            datetime.strptime("12:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("14:59:59", "%H:%M:%S").time()
-        ):
-            return lunch_menu
-        elif (
-            datetime.strptime("15:00:00", "%H:%M:%S").time()
-            <= current_time
-            < datetime.strptime("20:00:00", "%H:%M:%S").time()
-        ):
-            return dinner_menu
-        else:
-            print("GDS is closed :(")
-            return json.dumps({})
   
 
 @app.route("/<meal_period>", methods=["GET"])
@@ -219,8 +162,15 @@ def get_menu_endpoint(meal_period: str):
     """
     return get_bucket_data(meal_period)
 
+@app.route("/")
+def hello() -> str:
+    """Return a friendly HTTP greeting.
 
-# Error handler for unauthorized access
+    Returns:
+        A string with the words 'Hello World!'.
+    """
+    return "NJIT Bytes API"
+
 @app.errorhandler(401)
 def unauthorized(e: Exception) -> Tuple[str, int]:
     """

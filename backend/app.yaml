@@ -1,13 +1,15 @@
-runtime: python39
+runtime: python
+env: flex
 entrypoint: gunicorn -b :$PORT main:app
+
+runtime_config:
+  operating_system: ubuntu22
 
 env_variables:
   BASIC_AUTH_USERNAME: $BASIC_AUTH_USERNAME
   BASIC_AUTH_PASSWORD: $BASIC_AUTH_PASSWORD
   API_BASE_URL: $API_BASE_URL
   GC_BUCKET_NAME: $GC_BUCKET_NAME
-
-instance_class: F2
 
 handlers:
 - url: /.*
