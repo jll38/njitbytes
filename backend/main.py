@@ -42,7 +42,7 @@ app.config["API_BASE_URL"] = api_base_url
 app.config["GC_BUCKET_NAME"] = bucket_name
 
 
-def get_and_cache_menu(current_date: str) -> Tuple[str, int]:
+def get_and_cache_menu(current_date: str) -> str:
     """
     Fetches menu data from an API, filters, and caches it.
 
@@ -59,11 +59,11 @@ def get_and_cache_menu(current_date: str) -> Tuple[str, int]:
         meal_name: str = MEAL_PERIOD_MAPPING.get(period, "")
         cached_data[meal_name] = menu
 
-    return jsonify({"message": "Menu data updated successfully."}), 200
+    return json.dumps({"message": "Menu data updated successfully."})
 
 
 @app.route("/update-menus", methods=["POST"])
-def update_buckets():
+def update_buckets() -> str:
     """
     Updates the buckets with the cached menu data.
 
@@ -76,7 +76,7 @@ def update_buckets():
         blob = bucket.blob(f"{meal_period}/menu.json")
         blob.upload_from_string(json.dumps(menu_data))
 
-    return jsonify({"message": "Menu data updated successfully."}), 200
+    return json.dumps({"message": "Menu data updated successfully."})
 
 
 def get_bucket_data(meal_period: str):
