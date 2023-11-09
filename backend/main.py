@@ -162,6 +162,14 @@ def get_menu_endpoint(meal_period: str):
     """
     return get_bucket_data(meal_period)
 
+@app.route("/")
+def hello() -> str:
+    """Return a friendly HTTP greeting.
+
+    Returns:
+        A string with the words 'Hello World!'.
+    """
+    return "NJIT Bytes API"
 
 @app.errorhandler(401)
 def unauthorized(e: Exception) -> Tuple[str, int]:
