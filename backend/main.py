@@ -20,7 +20,7 @@ MEAL_PERIOD_MAPPING = {
 
 cached_data: Dict[str, Any] = {}
 storage_client = storage.Client()
-app: Flask = Flask("NJIT Bytes")
+app: Flask = Flask(__name__)
 CORS(app)
 basic_auth: BasicAuth = BasicAuth(app)
 new_york = pytz.timezone("America/New_York")
