@@ -25,7 +25,7 @@ export function Menu({}) {
     if (process.env.REACT_APP_ENV === "development") {
       url = "https://corsproxy.io/?https://api.njitbytes.co/breakfast";
     } else {
-      url = "https://api.njitbytes.co/breakfast";
+      url = "https://corsproxy.io/?https://api.njitbytes.co/breakfast";
     }
     axios
       .get(url, {

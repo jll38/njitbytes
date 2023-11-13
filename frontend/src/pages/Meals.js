@@ -87,7 +87,7 @@ export function Meals({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/breakfast";
+      url = "https://api.njitbytes.co/breakfast";
     } else {
       url = "https://api.njitbytes.co/breakfast";
     }
@@ -108,7 +108,7 @@ export function Meals({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/lunch";
+      url = "https://api.njitbytes.co/lunch";
     } else {
       url = "https://api.njitbytes.co/lunch";
     }
@@ -129,7 +129,7 @@ export function Meals({}) {
   useEffect(() => {
     let url;
     if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/dinner";
+      url = "https://api.njitbytes.co/dinner";
     } else {
       url = "https://api.njitbytes.co/dinner";
     }
