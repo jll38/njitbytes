@@ -24,7 +24,3 @@ You may not apply legal terms or technological measures that legally restrict ot
 
 You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
 
-#### Disclaimer:
-
-The license does not grant you any rights to use personal data, third-party rights, or any branding. The license does not include the right to sublicense. For details, refer to the full license text.
-
