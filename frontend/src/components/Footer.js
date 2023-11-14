@@ -30,7 +30,7 @@ export function Footer() {
           }}
         >
           <img
-            src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" // Replace with actual GitHub logo URL
+            src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
             alt="GitHub Logo"
             style={{ width: '24px', height: '24px', marginRight: '5px' }}
           />
@@ -44,7 +44,7 @@ export function Footer() {
           href="/contributors"
           style={{ color: '#333', textDecoration: 'none' }}
         >
-          Contributors
+          NJITBytes Contributors
         </a>
       </div>
     </footer>
