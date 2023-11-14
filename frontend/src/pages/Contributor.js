@@ -50,28 +50,35 @@ export function Contributors() {
             {contributorsRows.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((contributor) => (
-                  <td key={contributor.login} style={{ padding: '10px', textAlign: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <img
-                        src={contributor.avatar_url}
-                        alt={`${contributor.login}'s avatar`}
-                        style={{
-                          borderRadius: '50%',
-                          width: '80px',
-                          height: '80px',
-                        }}
-                      />
-                      <br />
+                  <td key={contributor.login} style={{ padding: '15px', textAlign: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <img
+                      src={contributor.avatar_url}
+                      alt={`${contributor.login}'s avatar`}
+                      style={{
+                        borderRadius: '50%',
+                        width: '100px',
+                        height: '100px',
+                      }}
+                    />
+                    <div style={{ marginTop: '10px' }}>
                       <a
                         href={contributor.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ fontWeight: 'bold', textTransform: 'uppercase' }}
+                        style={{
+                          fontWeight: 'bold',
+                          textTransform: 'uppercase',
+                          color: '#333',
+                          textDecoration: 'none',
+                          fontSize: '16px',
+                        }}
                       >
                         {contributor.login}
                       </a>
                     </div>
-                  </td>
+                  </div>
+                </td>
                 ))}
               </tr>
             ))}
