@@ -37,13 +37,15 @@ export function Contributors() {
   const contributorsRows = chunkArray(contributors, columns);
 
   return (
-    <div>
-      <div className="p-[4rem] pb-[15rem] h-screen w-full flex flex-col justify-center items-center">
+    <div className="contributor-container">
+      <div className="h-screen w-full flex flex-col justify-center items-center">
         <Logo includeChip={false} />
-        <img src="/images/github_contributors.png" alt="GitHub Contributors"></img>
-        
+        <div className="mt-8"> {/* Add margin to separate logo and image */}
+          <img src="/images/github_contributors.png" alt="GitHub Contributors" className="max-w-full h-auto" />
+        </div>
+
         {/* Display contributors in a dynamically growing table */}
-        <table style={{ borderCollapse: 'collapse' }}>
+        <table className="contributors-table"> {/* Add margin to separate image and table */}
           <tbody>
             {contributorsRows.map((row, rowIndex) => (
               <tr key={rowIndex}>
@@ -53,9 +55,10 @@ export function Contributors() {
                       <img
                         src={contributor.avatar_url}
                         alt={`${contributor.login}'s avatar`}
-                        style={{ borderRadius: '50%',
-                        width: '80px',  // Adjust the size as needed
-                        height: '80px', // Adjust the size as needed
+                        style={{
+                          borderRadius: '50%',
+                          width: '80px',
+                          height: '80px',
                         }}
                       />
                       <br />
