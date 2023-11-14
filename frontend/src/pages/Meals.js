@@ -1,5 +1,5 @@
 import { TextSkeleton } from "./../components/TextSkeleton";
-import { Footer } from "./../components/footer";
+import { Footer } from "../components/Footer";
 import { Logo } from "./../components/Logo";
 import { getInfo } from "../utils/userinfo";
 import { Button } from "@mui/joy";
@@ -85,12 +85,7 @@ export function Meals({}) {
   /*TODO: Add logic to limit daily meal requests*/
 
   useEffect(() => {
-    let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://api.njitbytes.co/breakfast";
-    } else {
-      url = "https://api.njitbytes.co/breakfast";
-    }
+    const url = "https://api.njitbytes.co/breakfast";
     axios
       .get(url, {
         auth: {
@@ -106,12 +101,7 @@ export function Meals({}) {
   }, []);
 
   useEffect(() => {
-    let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://api.njitbytes.co/lunch";
-    } else {
-      url = "https://api.njitbytes.co/lunch";
-    }
+    const url = "https://api.njitbytes.co/lunch";
     axios
       .get(url, {
         auth: {
@@ -127,12 +117,7 @@ export function Meals({}) {
   }, []);
 
   useEffect(() => {
-    let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://api.njitbytes.co/dinner";
-    } else {
-      url = "https://api.njitbytes.co/dinner";
-    }
+    const url = "https://api.njitbytes.co/dinner";
     axios
       .get(url, {
         auth: {
