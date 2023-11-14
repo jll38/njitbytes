@@ -2,7 +2,7 @@ import React from "react";
 import Form from "../components/questions/Form";
 import { Button, Box } from "@mui/joy";
 import { Logo } from "../components/Logo";
-import { Footer } from "../components/footer";
+import { Footer } from "../components/Footer";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import SettingsIcon from "@mui/icons-material/Settings";
