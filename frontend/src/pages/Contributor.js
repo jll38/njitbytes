@@ -50,17 +50,44 @@ export function Contributors() {
             {contributorsRows.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((contributor) => (
-                  <td key={contributor.login} style={{ padding: '15px', textAlign: 'center' }}>
+                  <td
+                  style={{
+                    padding: '15px',
+                    textAlign: 'center',
+                    transition: 'transform 0.3s ease-in-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.1) rotateX(10deg)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) rotateX(0deg)';
+                  }}
+                >
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <img
-                      src={contributor.avatar_url}
-                      alt={`${contributor.login}'s avatar`}
-                      style={{
-                        borderRadius: '50%',
-                        width: '100px',
-                        height: '100px',
-                      }}
-                    />
+                    <a
+                      href={contributor.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <img
+                        src={contributor.avatar_url}
+                        alt={`${contributor.login}'s avatar`}
+                        style={{
+                          borderRadius: '50%',
+                          width: '120px',
+                          height: '120px',
+                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                          transition: 'transform 0.3s ease-in-out',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = 'scale(1.1)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = 'scale(1)';
+                        }}
+                      />
+                    </a>
                     <div style={{ marginTop: '10px' }}>
                       <a
                         href={contributor.html_url}
