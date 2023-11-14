@@ -13,16 +13,20 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
 import BadgeIcon from "@mui/icons-material/Badge";
-import CakeIcon from '@mui/icons-material/Cake';
-import ScaleIcon from '@mui/icons-material/Scale';
-import HeightIcon from '@mui/icons-material/Height';
-import FlagIcon from '@mui/icons-material/Flag';
-import WcIcon from '@mui/icons-material/Wc';
-import DoDisturbIcon from '@mui/icons-material/DoDisturb';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import CakeIcon from "@mui/icons-material/Cake";
+import ScaleIcon from "@mui/icons-material/Scale";
+import HeightIcon from "@mui/icons-material/Height";
+import FlagIcon from "@mui/icons-material/Flag";
+import WcIcon from "@mui/icons-material/Wc";
+import DoDisturbIcon from "@mui/icons-material/DoDisturb";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { getInfo } from "../../utils/userinfo";
+
 export function EditProfile() {
   const [editItem, setEditItem] = useState(null);
   const [input, setInput] = useState(null);
+  const user = getInfo();
+
   if (localStorage.getItem("byte_quizStatus") === null)
     window.location.assign("/");
 
@@ -75,7 +79,7 @@ export function EditProfile() {
                 setEditItem("byte_age");
               }}
             >
-              <CakeIcon style={{ fontSize: "48px" }}/>
+              <CakeIcon style={{ fontSize: "48px" }} />
               Age
             </Button>
             <Button
@@ -86,7 +90,7 @@ export function EditProfile() {
                 setEditItem("byte_weight");
               }}
             >
-              <ScaleIcon style={{ fontSize: "48px" }}/>
+              <ScaleIcon style={{ fontSize: "48px" }} />
               Weight
             </Button>
             <Button
@@ -97,7 +101,7 @@ export function EditProfile() {
                 setEditItem("byte_height");
               }}
             >
-              <HeightIcon style={{ fontSize: "48px" }}/>
+              <HeightIcon style={{ fontSize: "48px" }} />
               Height
             </Button>
             <Button
@@ -108,7 +112,7 @@ export function EditProfile() {
                 setEditItem("byte_goal");
               }}
             >
-              <FlagIcon style={{fontSize: "48px"}}/>
+              <FlagIcon style={{ fontSize: "48px" }} />
               Goals
             </Button>
             <Button
@@ -119,7 +123,7 @@ export function EditProfile() {
                 setEditItem("byte_sex");
               }}
             >
-              <WcIcon style={{ fontSize: "48px" }}/>
+              <WcIcon style={{ fontSize: "48px" }} />
               Sex
             </Button>
             <Button
@@ -130,7 +134,7 @@ export function EditProfile() {
                 setEditItem("byte_preferences");
               }}
             >
-              <ThumbUpIcon style={{fontSize: "48px" }}/>
+              <ThumbUpIcon style={{ fontSize: "48px" }} />
               Dietary Preference
             </Button>
             <Button
@@ -141,7 +145,7 @@ export function EditProfile() {
                 setEditItem("byte_restrictions");
               }}
             >
-              <DoDisturbIcon style={{ fontSize: "48px" }}/>
+              <DoDisturbIcon style={{ fontSize: "48px" }} />
               Dietary Restrictions
             </Button>
           </div>
@@ -241,11 +245,11 @@ export function EditProfile() {
           </div>
         )}
         {editItem === "byte_goal" && (
-          <div>
+          <>
             <FormLabel>Goals</FormLabel>
             <RadioGroup
               aria-labelledby="goal-label"
-              defaultValue={localStorage.getItem("byte_goal")}
+              defaultValue={user.goal}
               size="lg"
             >
               <div className="flex justify-between text-center">
@@ -274,6 +278,135 @@ export function EditProfile() {
                     </Sheet>
                   )
                 )}
+              </div>
+            </RadioGroup>
+            <div className="flex justify-between">
+              <Button onClick={handleCancel}>Cancel</Button>
+              <Button
+                onClick={() => {
+                  submitChange();
+                }}
+              >
+                Submit
+              </Button>
+            </div>
+          </>
+        )}
+        {editItem === "byte_sex" && (
+          <div>
+            <RadioGroup
+              aria-labelledby="goal-label"
+              defaultValue={user.sex}
+              size="lg"
+            >
+              <div className="flex center text-center">
+                {["Male", "Female"].map((value) => (
+                  <Sheet
+                    key={value}
+                    sx={{
+                      p: 0.8,
+                      borderRadius: "md",
+                      boxShadow: "sm",
+                      width: "150%",
+                    }}
+                  >
+                    <Radio
+                      id="sex"
+                      label={`${value}`}
+                      aria-label={`select-${value}`}
+                      overlay
+                      disableIcon
+                      value={value}
+                      onClick={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                  </Sheet>
+                ))}
+              </div>
+            </RadioGroup>
+            <div className="flex justify-between">
+              <Button onClick={handleCancel}>Cancel</Button>
+              <Button
+                onClick={() => {
+                  submitChange();
+                }}
+              >
+                Submit
+              </Button>
+            </div>
+          </div>
+        )}
+        {editItem === "byte_preferences" && (
+          <div>
+            <FormLabel sx={{ fontSize: "1.3em" }}>
+              Dietary Preferences?
+            </FormLabel>
+            <RadioGroup
+              aria-labelledby="diet-preferences-label"
+              defaultValue={user.preferences}
+              size="lg"
+              id="diet-preferences"
+            >
+              <div className="flex flex-col sm:flex-row justify-left gap-8 text-center">
+                {["Low Carb", "Low Fat", "None"].map((value) => (
+                  <Sheet
+                    key={value}
+                    sx={{
+                      p: 2,
+                      borderRadius: "md",
+                      boxShadow: "sm",
+                      width: "100%",
+                    }}
+                  >
+                    <Radio
+                      id="goal"
+                      label={`${value}`}
+                      aria-label={`select-${value}`}
+                      overlay
+                      disableIcon
+                      value={value}
+                      onClick={(e) => {
+                        
+                      }}
+                    />
+                  </Sheet>
+                ))}
+              </div>
+            </RadioGroup>
+          </div>
+        )}
+        {editItem === "byte_restrictions" && (
+          <div>
+            <FormLabel>Dietary Restrictions</FormLabel>
+            <RadioGroup
+              aria-labelledby="diet-restrictions-label"
+              defaultValue={localStorage.getItem("byte_restrictions")}
+              size="lg"
+              id="diet-restrictions"
+            >
+              <div className="flex sm:flex-row flex-col items-center text-center gap-4">
+                {["Halal", "Vegan", "Gluten Free", "None"].map((value) => (
+                  <Sheet
+                    key={value}
+                    sx={{
+                      p: 2,
+                      borderRadius: "md",
+                      boxShadow: "sm",
+                      width: "100%",
+                    }}
+                  >
+                    <Radio
+                      id="diet-restrictions"
+                      label={`${value}`}
+                      aria-label={`select-${value}`}
+                      overlay
+                      disableIcon
+                      value={value}
+                      onClick={(e) => {}}
+                    />
+                  </Sheet>
+                ))}
               </div>
             </RadioGroup>
             <div className="flex justify-between">
