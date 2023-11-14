@@ -4,7 +4,7 @@ import { CaloricInfo } from "./pages/CaloricInfo";
 import { Settings } from "./pages/Settings";
 import { EditProfile } from "./pages/settings/edit-profile";
 import { FavoriteItemsPage } from "./pages/settings/FavoriteMenuItems";
-
+import { Contributors } from "./pages/Contributor";
 import { Meals } from "./pages/Meals";
 import logo from "./logo.svg";
 import "./App.scss";
@@ -72,6 +72,7 @@ function App() {
             <Route path="settings/edit-profile" element={<EditProfile />} />
             <Route path="meals" element={<Meals />} />
             <Route path="caloric-information" element={<CaloricInfo />} />
+            <Route path="contributors" element={<Contributors />} />
           </Route>
         </Routes>
       </BrowserRouter>

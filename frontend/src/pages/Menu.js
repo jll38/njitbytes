@@ -22,11 +22,7 @@ export function Menu({}) {
 
   useEffect(() => {
     let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/breakfast";
-    } else {
-      url = "https://api.njitbytes.co/breakfast";
-    }
+    url = "https://api.njitbytes.co/breakfast";
     axios
       .get(url, {
         auth: {
@@ -44,11 +40,7 @@ export function Menu({}) {
 
   useEffect(() => {
     let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/lunch";
-    } else {
-      url = "https://api.njitbytes.co/lunch";
-    }
+    url = "https://api.njitbytes.co/lunch";
     axios
       .get(url, {
         auth: {
@@ -65,11 +57,7 @@ export function Menu({}) {
 
   useEffect(() => {
     let url;
-    if (process.env.REACT_APP_ENV === "development") {
-      url = "https://corsproxy.io/?https://api.njitbytes.co/dinner";
-    } else {
-      url = "https://api.njitbytes.co/dinner";
-    }
+    url = "https://api.njitbytes.co/dinner";
     axios
       .get(url, {
         auth: {
