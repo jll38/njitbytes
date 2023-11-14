@@ -88,8 +88,7 @@ export function Menu({}) {
     <div>
       <div className="p-[1rem] sm:p-[4rem] h-screen w-full flex flex-col items-center">
         <Logo />
-        <div className="mt-[22rem] sm:mt-[14rem]"></div>
-        <div className="sm:mt-[5rem] w-full flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col items-center justify-center">
           <div className="mb-[1rem] text-center text-[.85em]">
             Your recommended caloric intake is:{" "}
             <a href="/caloric-information" className="underline">

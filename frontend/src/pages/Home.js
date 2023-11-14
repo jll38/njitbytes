@@ -14,11 +14,11 @@ export function Home({ quizStatus, setQuizStatus }) {
       <div
         className={`p-[4rem ${
           quizStatus ? "pt-[4rem]" : "pt-[18rem]"
-        } h-screen w-full flex flex-col justify-center items-center`}
+        } h-screen w-full flex flex-col gap-6 items-center`}
       >
         <Logo />
         {quizStatus ? (
-          <div className="text-center mt-20 sm:mt-[10em]">
+          <div className="text-center">
             <div className="leading-10">
               <h2>Welcome back, {JSON.parse(localStorage.getItem("byte_name"))}</h2>
               <div className="text-[1.25em]">What would you like to do?</div>

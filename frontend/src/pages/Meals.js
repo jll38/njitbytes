@@ -219,8 +219,7 @@ export function Meals({}) {
     <div>
       <div className="p-[1rem] sm:p-[4rem] h-screen w-full flex flex-col items-center">
         <Logo />
-        <div className="mt-[24rem] sm:mt-[16rem]"></div>
-        <div className="sm:mt-[5rem] w-full flex items-center gap-4 justify-center">
+        <div className="mt-[5rem] w-full flex items-center gap-4 justify-center">
           <Button
             onClick={() => {
               setResponseData(null);

@@ -16,10 +16,10 @@ export function Settings() {
     <div>
       <div
         className="p-[4rem 
-        h-screen w-full flex flex-col justify-center items-center"
+        h-screen w-full flex flex-col justify-center items-center gap-6"
       >
         <Logo />
-        <div className="mt-[10rem] md:mt-[12rem]"></div>
+
         <div className="flex justify-center gap-4">
         <Button
             variant="soft"
