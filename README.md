@@ -35,13 +35,20 @@ NJITBytes is a [hackathon-inspired](https://devpost.com/software/njit-bytes) app
 
 ## 🛠️ Installation
 
-To run the NJITBytes API locally, follow these steps:
+To run the NJITBytes Backend locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/yourusername/njitbytes.git`
-2. CD into the project 'cd njitbytes/backend'
+1. Clone the repository: `git clone https://github.com/jll38/njitbytes.git`
+2. CD into the backend 'cd njitbytes/backend'
 3. Add the .env
 4. Install dependencies: `pip install -r requirements.txt`
 5. Run the Flask app: `python app.py`
+
+To run the NJITBytes Frontend locally, follow these steps:
+1. Clone the repository: `git clone https://github.com/jll38/njitbytes.git`
+2. CD into the frontend 'cd njitbytes/frontend'
+3. Add the .env
+4. Install dependencies: `npm install`
+5. Run the React Web App: `npm start`
 
 ## 🌟 Usage
 
