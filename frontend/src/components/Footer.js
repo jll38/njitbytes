@@ -44,7 +44,7 @@ export function Footer() {
           href="/contributors"
           style={{ color: '#333', textDecoration: 'none' }}
         >
-          NJITBytes Contributors
+          Our Contributors
         </a>
       </div>
     </footer>
