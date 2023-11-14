@@ -1,5 +1,5 @@
 import { TextSkeleton } from "./../components/TextSkeleton";
-import { Footer } from "./../components/footer";
+import { Footer } from "../components/Footer";
 import { Logo } from "./../components/Logo";
 import { getInfo } from "../utils/userinfo";
 import { Button } from "@mui/joy";

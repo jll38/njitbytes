@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from "../components/Logo";
-import { Footer } from "../components/footer";
+import { Footer } from "../components/Footer";
 import axios from 'axios';
 
 export function Contributors() {

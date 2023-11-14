@@ -1,5 +1,5 @@
 import { RenderMeals } from "./../components/RenderMeals";
-import { Footer } from "./../components/footer";
+import { Footer } from "../components/Footer";
 import { Logo } from "./../components/Logo";
 import axios from "axios";
 import React from "react";
