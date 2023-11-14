@@ -6,7 +6,7 @@ import React from "react";
 
 import { Tabs, TabList, Tab, TabPanel } from "@mui/joy";
 import { useState, useEffect } from "react";
-import { getDailyCals, } from "../utils/macros";
+import { getDailyCals } from "../utils/macros";
 import { getFavoriteArr } from "../utils/userinfo";
 
 export function Menu({}) {
@@ -21,8 +21,7 @@ export function Menu({}) {
   });
 
   useEffect(() => {
-    let url;
-    url = "https://api.njitbytes.co/breakfast";
+    const url = "https://api.njitbytes.co/breakfast";
     axios
       .get(url, {
         auth: {
@@ -39,8 +38,7 @@ export function Menu({}) {
   }, []);
 
   useEffect(() => {
-    let url;
-    url = "https://api.njitbytes.co/lunch";
+    const url = "https://api.njitbytes.co/lunch";
     axios
       .get(url, {
         auth: {
@@ -56,8 +54,7 @@ export function Menu({}) {
   }, []);
 
   useEffect(() => {
-    let url;
-    url = "https://api.njitbytes.co/dinner";
+    const url = "https://api.njitbytes.co/dinner";
     axios
       .get(url, {
         auth: {
