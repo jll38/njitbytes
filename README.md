@@ -1,36 +1,62 @@
+# NJITBytes
 <div align="center">
   <img src="https://github.com/jll38/njithacks-njitbytes/assets/17418847/ee62697a-8ee3-4f34-8dbc-18222ed1b058" alt="NJITBytes Logo" width="200">
 </div>
 
-# NJITBytes
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![Flask Version](https://img.shields.io/badge/Flask-2.0-green.svg)](https://palletsprojects.com/p/flask/)
+[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-App%20Engine-orange.svg)](https://cloud.google.com/appengine)
+[![React Version](https://img.shields.io/badge/React-17.0.0-blue.svg)](https://reactjs.org/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-brightgreen.svg)](https://vercel.com/)
+[![Code Style](https://img.shields.io/badge/Code%20Style-Black-black.svg)](https://black.readthedocs.io/en/stable/)
 
-Welcome to NJITBytes! This innovative hackathon project is designed to improve the dining experience at the New Jersey Institute of Technology by leveraging the university's dining hall menu API. NJITBytes aims to provide custom and personalized meal plans for students and faculty, ensuring that each meal caters to individual dietary preferences, restrictions, and goals with the help of AI integration.
+## 🚀 Description
 
-## Team Members
-NJITBytes is brought to you by a team of current NJIT students:
-- Julian Lechner
-- Vladimir Gutierrez
-- Andrew Dragoslavic
-- Benjamin McCabe
+NJITBytes is a [hackathon-inspired](https://devpost.com/software/njit-bytes) application that serves live menus for GDS at NJIT. It also provides AI-powered personalized meal recommendations based on user information like height, weight, age, and dietary restrictions and goals.
 
-## Key Features
+## 💻 Technologies Used
 
-NJITBytes is packed with features that enhance the dining experience at NJIT:
+- **Backend:**
+  - Python with Flask
+  - Google Cloud App Engine for hosting
+  - Google Cloud Storage for data storage
 
-### Dining Hall Menu API Integration
-- NJITBytes seamlessly connects to the NJIT dining services' API to fetch the latest dining hall menu. This ensures that users always have access to up-to-date information on the available dishes.
+- **Frontend:**
+  - React.js
+  - Hosted on Vercel
 
-### Personalized Meal Planning
-- NJITBytes offers personalized meal plans tailored to the unique dietary needs, preferences, and objectives of each user. Whether you're a carnivore, vegetarian, or have specific dietary restrictions, our platform will help you make meal choices that align with your lifestyle.
+## ✨ Features
 
-### Nutritional Insights
-- Making informed decisions about your meals is essential for maintaining a healthy diet. NJITBytes provides valuable nutritional information for each dish, allowing users to make choices that suit their nutritional goals.
+- Live menus for GDS breakfast, lunch, and dinner.
+- Personalized meal recommendations based on user information.
+- Easy-to-use API for retrieving menu information.
 
-### User-Friendly Interface
-- We believe that a user-friendly interface is key to a great user experience. NJITBytes boasts an intuitive and interactive design, ensuring that users can navigate the platform with ease and satisfaction.
+## 🛠️ Installation
 
-## Get Started with NJITBytes
+To run the NJITBytes API locally, follow these steps:
 
-NJITBytes is here to make your dining experience at NJIT more enjoyable and tailored to your needs. Whether you're a student with specific dietary preferences or a faculty member with unique dietary requirements, NJITBytes has you covered.
+1. Clone the repository: `git clone https://github.com/yourusername/njitbytes.git`
+2. CD into the project 'cd njitbytes/backend'
+3. Add the .env
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run the Flask app: `python app.py`
 
-Stay tuned for updates and enjoy a personalized dining experience like never before with NJITBytes!
+## 🌟 Usage
+
+- Access the live menus by visiting the respective endpoints.
+- Get personalized meal recommendations by providing user information.
+- For detailed API documentation, refer to the [API documentation](API_DOCS.md).
+
+## 🤝 Contributing
+
+We welcome contributions! Read the [Contribution Guidelines](CONTRIBUTING.md) for more details.
+
+## 📄 License
+
+NJITBytes is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+Stay tuned for updates and enjoy a personalized dining experience like never before with NJITBytes! 🍽️🎉
+
+
+
