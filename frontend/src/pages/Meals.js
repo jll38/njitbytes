@@ -148,7 +148,6 @@ export function Meals({}) {
     } else {
       menu = dinner;
     }
-    console.log("contacting openai...");
     let response;
 
     try {
@@ -185,7 +184,6 @@ export function Meals({}) {
       setErrorState("ChatGPT failed to respond");
     }
     const mealStr = response.choices[0].message.content;
-    console.log(mealStr);
     setLoading(false);
     try {
       setResponseData(JSON.parse(mealStr));

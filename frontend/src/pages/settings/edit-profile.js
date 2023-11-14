@@ -32,7 +32,6 @@ export function EditProfile() {
 
   const handleChange = (e) => {
     setInput(e.target.value);
-    console.log(input);
   };
 
   const submitChange = () => {
