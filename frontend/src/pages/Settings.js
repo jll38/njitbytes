@@ -25,7 +25,7 @@ export function Settings() {
             variant="soft"
             className="h-[8rem] w-[8rem] flex flex-col"
             onClick={() => {
-                window.location.assign("/");
+                window.location.assign("/settings/edit-profile");
             }}
             sx={{
               color: "text",
