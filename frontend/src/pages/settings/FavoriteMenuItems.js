@@ -27,7 +27,6 @@ export function FavoriteItemsPage() {
   };
 
   const handleClick = (item) => {
-    console.log("test");
     if (confirmDelete) {
       handleRemove(item);
     } else {

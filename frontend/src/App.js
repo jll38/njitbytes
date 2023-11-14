@@ -20,7 +20,6 @@ function App() {
     localStorage.getItem("byte_quizStatus") !== null ? true : false
   );
 
-  console.log(quizStatus);
   const theme = extendTheme({
     colorSchemes: {
       light: {

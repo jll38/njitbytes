@@ -49,7 +49,6 @@ function Form({ setQuizStatus }) {
           localStorage.setItem(key, JSON.stringify(obj[key]));
         }
       }
-      console.log("All properties saved to local storage.");
     } catch (error) {
       console.error("Error saving to local storage:", error);
     }
@@ -341,7 +340,6 @@ function Form({ setQuizStatus }) {
                     !(localStorage.getItem("byte_activity") === null)
                       ? true
                       : false;
-                  console.log(isvalid);
                   if (!isvalid) {
                     setErrorState(
                       "Please fill out every question before continuing."
@@ -352,7 +350,6 @@ function Form({ setQuizStatus }) {
                     setErrorState(null);
                   }
 
-                  console.log(errorState);
                 }}
               >
                 Next
@@ -468,7 +465,6 @@ function Form({ setQuizStatus }) {
                   setErrorState(null);
                 }
 
-                console.log(errorState);
               }}
             >
               Next
