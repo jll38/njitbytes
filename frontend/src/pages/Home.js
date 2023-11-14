@@ -4,8 +4,8 @@ import { Button, Box } from "@mui/joy";
 import { Logo } from "../components/Logo";
 import { Footer } from "../components/footer";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import SettingsIcon from '@mui/icons-material/Settings';
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { Menu } from "./Menu";
 
 export function Home({ quizStatus, setQuizStatus }) {
@@ -13,14 +13,16 @@ export function Home({ quizStatus, setQuizStatus }) {
     <div>
       <div
         className={`p-[4rem ${
-          quizStatus ? "pt-[4rem]" : "pt-[18rem]"
-        } h-screen w-full flex flex-col gap-6 items-center`}
+          quizStatus ? "" : "gap-[6rem]"
+        } h-screen w-full flex flex-col pt-[4rem] items-center `}
       >
         <Logo />
         {quizStatus ? (
           <div className="text-center">
-            <div className="leading-10">
-              <h2>Welcome back, {JSON.parse(localStorage.getItem("byte_name"))}</h2>
+            <div className="leading-10 mt-[2rem]">
+              <h2>
+                Welcome back, {JSON.parse(localStorage.getItem("byte_name"))}
+              </h2>
               <div className="text-[1.25em]">What would you like to do?</div>
             </div>
             <div className="flex justify-center gap-4">
@@ -28,7 +30,7 @@ export function Home({ quizStatus, setQuizStatus }) {
                 variant="soft"
                 className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
                 onClick={() => {
-                  window.location.assign("/menu")
+                  window.location.assign("/menu");
                 }}
                 sx={{
                   color: "text",
@@ -41,7 +43,7 @@ export function Home({ quizStatus, setQuizStatus }) {
                 variant="soft"
                 className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
                 onClick={() => {
-                  window.location.assign("/meals")
+                  window.location.assign("/meals");
                 }}
                 sx={{
                   color: "text",
@@ -54,7 +56,7 @@ export function Home({ quizStatus, setQuizStatus }) {
                 variant="soft"
                 className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
                 onClick={() => {
-                  window.location.assign("/settings")
+                  window.location.assign("/settings");
                 }}
                 sx={{
                   color: "text",

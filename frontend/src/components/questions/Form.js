@@ -68,7 +68,6 @@ function Form({ setQuizStatus }) {
           sx={{
             fontSize: "36px",
             padding: "10px",
-            marginTop: "-150px",
           }}
         >
           GET STARTED
@@ -76,7 +75,7 @@ function Form({ setQuizStatus }) {
       );
     case 1:
       return (
-        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] sm:mt-[14em] pb-[4em]">
+        <div className="w-full md:w-[40rem] px-8 pb-[4em] -mt-[4rem]">
           <div className="flex flex-col gap-3">
             <div aria-label="name-question">
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
@@ -365,7 +364,7 @@ function Form({ setQuizStatus }) {
 
     case 2:
       return (
-        <div className="w-full md:w-[40rem] h-[40rem] px-8 mt-[20em] sm:mt-[8em] pb-[4em]">
+        <div className="w-full md:w-[40rem] px-8 -mt-[4rem]">
           <div aria-label="dietary-restrictions-question">
             <FormLabel sx={{ fontSize: "1.3em" }}>
               Dietary Restrictions?
