@@ -44,9 +44,9 @@ export function FavoriteItemsPage() {
   };
 
   return localStorage.getItem("byte_quizStatus") !== null ? (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center gap-6">
       <Logo />
-      <div className="mt-[8rem]">
+      <div className="">
         <h2>Favorite Menu Items</h2>
         <ul>
           {favorites.map((item, i) => {

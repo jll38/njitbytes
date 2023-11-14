@@ -6,8 +6,8 @@ export function Logo({ includeChip = true }) {
   const isOpen = isOpenNow();
 
   return (
-    <a className="absolute top-[3rem] text-center" href="/">
-      <div id="logo" className="flex flex-col items-center leading-10">
+    <a  href="/">
+      <div id="logo" className="flex flex-col items-center leading-10 ">
         <img
           className="mb-2 w-full max-w-[150px] h-auto"
           src="/images/njitbytes-transparent.png"
