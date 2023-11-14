@@ -81,7 +81,7 @@ function Form({ setQuizStatus }) {
               <FormLabel sx={{ fontSize: "1.3em" }}>First Name</FormLabel>
               <Input
                 id="name"
-                value={localStorage.getItem("age")}
+                value={localStorage.getItem("byte_name")}
                 autoComplete={'off'}
                 onChange={(e) => {
                   handleChange(e);
