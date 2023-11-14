@@ -31,7 +31,7 @@ export function Contributors() {
   };
 
   // Define the number of columns for the table
-  const columns = 3;
+  const columns = 4;
 
   // Split contributors into rows with the specified number of columns
   const contributorsRows = chunkArray(contributors, columns);
