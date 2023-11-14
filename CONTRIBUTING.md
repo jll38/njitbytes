@@ -49,6 +49,6 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
 
 ## License
 
-By contributing to NJITBytes, you agree that your contributions will be licensed under the [LICENSE](LICENSE) file of this project.
+By contributing to NJITBytes, you agree that your contributions will be licensed under the [LICENSE](LICENSE.md) file of this project.
 
 ---
