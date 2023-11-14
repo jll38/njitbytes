@@ -46,7 +46,6 @@ To run the NJITBytes API locally, follow these steps:
 
 - Access the live menus by visiting the respective endpoints.
 - Get personalized meal recommendations by providing user information.
-- For detailed API documentation, refer to the [API documentation](API_DOCS.md).
 
 ## 🤝 Contributing
 
