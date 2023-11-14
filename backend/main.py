@@ -14,18 +14,17 @@ import pytz
 
 load_dotenv()
 
-
 class Config:
     BASIC_AUTH_USERNAME = os.environ.get("BASIC_AUTH_USERNAME")
     BASIC_AUTH_PASSWORD = os.environ.get("BASIC_AUTH_PASSWORD")
     GC_BUCKET_NAME = os.environ.get("GC_BUCKET_NAME")
     API_BASE_URL = os.environ.get("API_BASE_URL")
 
-
 if not Config.BASIC_AUTH_USERNAME or not Config.BASIC_AUTH_PASSWORD:
     raise ValueError(
         "BASIC_AUTH_USERNAME and BASIC_AUTH_PASSWORD must be defined in the .env file."
     )
+
 MEAL_PERIOD_MAPPING = {
     "8f7d": "breakfast",
     "8f73": "lunch",
