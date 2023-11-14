@@ -37,8 +37,8 @@ export function Footer() {
           Our GitHub
         </a>
       </div>
-      <div style={{ margin: '0 10px', color: '#333' }}>|</div>
-      <div>
+      <div style={{ margin: '0 5px', color: '#333' }}>|</div>
+      <div style={{ margin: '0 10px' }}>
         {/* Contributors Page Link */}
         <a
           href="/contributors"
