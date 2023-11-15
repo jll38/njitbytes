@@ -20,7 +20,7 @@ function LogoContent({ includeChip }) {
       <LogoImage />
       <h1 className="text-[2em] sm:text-[4em]">NJITBytes</h1>
       <div className="mt-4">Your NJIT Dining Companion</div>
-      {includeChip && (
+      {includeChip ? (
         <Chip
           className="mt-4"
           startDecorator={
@@ -32,8 +32,9 @@ function LogoContent({ includeChip }) {
         >
           <p className="text-[.75em]">{isOpen.message}</p>
         </Chip>
-      )}
+      ): null}
     </div>
+
   );
 }
 
