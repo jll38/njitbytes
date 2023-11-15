@@ -57,7 +57,7 @@ To run the NJITBytes Frontend locally, follow these steps:
 
 ## 🤝 Contributing
 
-We welcome contributions! Read the [Contribution Guidelines](CONTRIBUTING.md) for more details.
+We welcome contributions! Please read the [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
 ## 📄 License
 
