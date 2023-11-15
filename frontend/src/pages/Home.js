@@ -11,59 +11,53 @@ import { Menu } from "./Menu";
 export function Home({ quizStatus, setQuizStatus }) {
   return (
     <div>
-      <div
-        className={`p-[4rem ${
-          quizStatus ? "" : "gap-[6rem]"
-        } h-screen w-full flex flex-col pt-[4rem] items-center `}
-      >
+
+
+  <div className={`p-8 ${quizStatus ? '' : 'gap-24'} h-screen w-full flex flex-col items-center`}>
         <Logo />
+
         {quizStatus ? (
           <div className="text-center">
-            <div className="leading-10 mt-[2rem]">
-              <h2>
-                Welcome back, {JSON.parse(localStorage.getItem("byte_name"))}
-              </h2>
-              <div className="text-[1.25em]">What would you like to do?</div>
+            <div className="leading-10 mt-8">
+              <h2>Welcome back, {JSON.parse(localStorage.getItem('byte_name'))}</h2>
+              <div className="text-lg">What would you like to do?</div>
             </div>
-            <div className="flex justify-center gap-4">
+
+            <div className="flex justify-center gap-8 mt-8">
               <Button
-                variant="soft"
-                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
-                onClick={() => {
-                  window.location.assign("/menu");
-                }}
-                sx={{
-                  color: "text",
-                }}
+                variant="contained"
+                className="h-32 w-32 sm:h-40 sm:w-40 flex flex-col"
+                onClick={() => window.location.assign('/menu')}
+                style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s' }}
+                onMouseOver={(e) => (e.currentTarget.style.transform = 'translateY(-4px)')}
+                onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
               >
-                <MenuBookIcon style={{ fontSize: "48px" }} />
-                <div>View Menu</div>
+                <MenuBookIcon style={{ fontSize: '2rem' }} />
+                <div className="text-sm mt-2">View Menu</div>
               </Button>
+
               <Button
-                variant="soft"
-                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
-                onClick={() => {
-                  window.location.assign("/meals");
-                }}
-                sx={{
-                  color: "text",
-                }}
+                variant="contained"
+                className="h-32 w-32 sm:h-40 sm:w-40 flex flex-col"
+                onClick={() => window.location.assign('/meals')}
+                style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s' }}
+                onMouseOver={(e) => (e.currentTarget.style.transform = 'translateY(-4px)')}
+                onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
               >
-                <SmartToyIcon style={{ fontSize: "48px" }} />
-                <div>AI Meal Prep</div>
+                <SmartToyIcon style={{ fontSize: '2rem' }} />
+                <div className="text-sm mt-2">AI Meal Prep</div>
               </Button>
+
               <Button
-                variant="soft"
-                className="h-[6rem] w-[6rem] sm:h-[8rem] sm:w-[8rem] flex flex-col"
-                onClick={() => {
-                  window.location.assign("/settings");
-                }}
-                sx={{
-                  color: "text",
-                }}
+                variant="contained"
+                className="h-32 w-32 sm:h-40 sm:w-40 flex flex-col"
+                onClick={() => window.location.assign('/settings')}
+                style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', transition: 'transform 0.3s' }}
+                onMouseOver={(e) => (e.currentTarget.style.transform = 'translateY(-4px)')}
+                onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
               >
-                <SettingsIcon style={{ fontSize: "48px" }} />
-                <div>Settings</div>
+                <SettingsIcon style={{ fontSize: '2rem' }} />
+                <div className="text-sm mt-2">Settings</div>
               </Button>
             </div>
           </div>
