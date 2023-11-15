@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Form from "../components/questions/Form";
+import { Button } from "@mui/joy";
 import { Logo } from "../components/Logo";
 import { Footer } from "../components/Footer";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import SettingsIcon from "@mui/icons-material/Settings";
 import axios from 'axios';
 
 export function Contributors() {
@@ -31,89 +36,106 @@ export function Contributors() {
   };
 
   // Define the number of columns for the table
-  const columns = 4;
+  const columns = window.innerWidth < 600 ? 2 : 4;
 
   // Split contributors into rows with the specified number of columns
   const contributorsRows = chunkArray(contributors, columns);
 
   return (
-    <div className="contributor-container">
-      <div className="h-screen w-full flex flex-col justify-center items-center">
-        <Logo includeChip={false} />
-        <div className="mt-8"> {/* Add margin to separate logo and image */}
-          <img src="/images/github_contributors.png" alt="GitHub Contributors" className="max-w-full h-auto" />
-        </div>
+    <div
+  style={{
+    padding: "1%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "100vh",
+    justifyContent: "center",
+    paddingBottom: "10%",
+  }}
+>
+  <div style={{paddingBottom: '2.4rem'}}>
+    <Logo includeChip={false} />
+    <img src="/images/github_contributors.png" alt="GitHub Contributors" className="max-w-full h-auto" />
 
-        {/* Display contributors in a dynamically growing table */}
-        <table className="contributors-table"> {/* Add margin to separate image and table */}
-          <tbody>
-            {contributorsRows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((contributor) => (
-                  <td
-                  style={{
-                    padding: '15px',
-                    textAlign: 'center',
-                    transition: 'transform 0.3s ease-in-out',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.1) rotateX(10deg)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1) rotateX(0deg)';
-                  }}
-                >
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <a
-                      href={contributor.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <img
-                        src={contributor.avatar_url}
-                        alt={`${contributor.login}'s avatar`}
-                        style={{
-                          borderRadius: '50%',
-                          width: '120px',
-                          height: '120px',
-                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                          transition: 'transform 0.3s ease-in-out',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'scale(1.1)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'scale(1)';
-                        }}
-                      />
-                    </a>
-                    <div style={{ marginTop: '10px' }}>
-                      <a
-                        href={contributor.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          fontWeight: 'bold',
-                          textTransform: 'uppercase',
-                          color: '#333',
-                          textDecoration: 'none',
-                          fontSize: '16px',
-                        }}
-                      >
-                        {contributor.login}
-                      </a>
-                    </div>
-                  </div>
-                </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+  </div>
+  <div style={{ marginTop: "2%", width: "auto", margin: "0 auto" }}>
+    {/* Display contributors in a dynamically growing table */}
+    <table className="contributors-table">
+      {/* Add margin to separate image and table */}
+      <tbody>
+      {contributorsRows.map((row, rowIndex) => (
+  <tr key={rowIndex}>
+    {/* Use flex container for responsive layout */}
+    {row.map((contributor) => (
+      <td
+        key={contributor.id}
+        style={{
+          padding: "15px",
+          textAlign: "center",
+          transition: "transform 0.3s ease-in-out",
+          margin: "auto", // Center horizontally
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(1.1) rotateX(10deg)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1) rotateX(0deg)";
+        }}
+      >
+        <a
+          href={contributor.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            textDecoration: "none",
+            display: "block",
+            maxWidth: "100%",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          <img
+            src={contributor.avatar_url}
+            alt={`${contributor.login}'s avatar`}
+            style={{
+              borderRadius: "50%",
+              height: "125px",
+              boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.1)",
+              transition: "transform 0.3s ease-in-out",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          />
+          <span
+            style={{
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              color: "#333",
+              fontSize: "16px",
+              display: "block",
+              overflowWrap: "break-word",
+              marginTop: "0.5rem", // Adjust the margin to control the space between image and text
+            }}
+          >
+            {contributor.login.length > 11
+              ? `${contributor.login.slice(0, 11)}...`
+              : contributor.login}
+          </span>
+        </a>
+      </td>
+    ))}
+  </tr>
+))}
 
-      <Footer />
-    </div>
+      </tbody>
+    </table>
+  </div>
+  <Footer />
+</div>
+
   );
 }
