@@ -25,6 +25,7 @@ NJITBytes is a [hackathon-inspired](https://devpost.com/software/njit-bytes) app
 
 - **Frontend:**
   - React.js
+  - Joy UI
   - Hosted on Vercel
 
 ## ✨ Features
