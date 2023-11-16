@@ -17,41 +17,44 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const messaging = getMessaging(app);
-
+// Register the service worker first
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('/sw.js')
     .then((registration) => {
       console.log('Service Worker registered with scope:', registration.scope);
+
+      // Initialize Firebase after the service worker is registered
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const messaging = getMessaging(app);
+
+      // Get messaging token
+      getToken(messaging)
+        .then((token) => {
+          console.log('FCM Token:', token);
+          // Send this token to your server for later use
+        })
+        .catch((error) => {
+          console.error('Unable to get messaging token.', error);
+        });
+
+      // Handle incoming messages
+      onMessage(messaging, (payload) => {
+        console.log('Message received:', payload);
+        // Display a notification
+        const notificationTitle = payload.notification.title;
+        const notificationOptions = {
+          body: payload.notification.body,
+        };
+
+        window.registration.showNotification(notificationTitle, notificationOptions);
+      });
     })
     .catch((error) => {
       console.error('Service Worker registration failed:', error);
     });
 }
-
-getToken(messaging)
-  .then((token) => {
-    console.log('FCM Token:', token);
-    // Send this token to your server for later use
-  })
-  .catch((error) => {
-    console.error('Unable to get messaging token.', error);
-  });
-
-onMessage(messaging, (payload) => {
-  console.log('Message received:', payload);
-  // Display a notification
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-  };
-
-  window.registration.showNotification(notificationTitle, notificationOptions);
-});
 
 const root = document.getElementById('root');
 ReactDOM.createRoot(root).render(
