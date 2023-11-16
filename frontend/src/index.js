@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import 'firebase/messaging';
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-require('dotenv').config();
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -22,7 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const messaging = app.messaging();
+const messaging = getMessaging(app);
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
@@ -35,21 +33,16 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-messaging
-  .requestPermission()
-  .then(() => {
-    console.log('Notification permission granted.');
-    return messaging.getToken();
-  })
+getToken(messaging)
   .then((token) => {
     console.log('FCM Token:', token);
     // Send this token to your server for later use
   })
   .catch((error) => {
-    console.error('Unable to get permission to notify.', error);
+    console.error('Unable to get messaging token.', error);
   });
 
-messaging.onMessage((payload) => {
+onMessage(messaging, (payload) => {
   console.log('Message received:', payload);
   // Display a notification
   const notificationTitle = payload.notification.title;
@@ -57,7 +50,7 @@ messaging.onMessage((payload) => {
     body: payload.notification.body,
   };
 
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  window.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 const root = document.getElementById('root');
