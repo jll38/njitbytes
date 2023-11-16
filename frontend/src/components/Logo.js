@@ -1,6 +1,6 @@
-import React from 'react';
-import { Chip } from '@mui/joy';
-import { isOpenNow } from '../utils/timehandler';
+import React from "react";
+import { Chip } from "@mui/joy";
+import { isOpenNow } from "../utils/timehandler";
 
 function LogoImage() {
   return (
@@ -32,9 +32,8 @@ function LogoContent({ includeChip }) {
         >
           <p className="text-[.75em]">{isOpen.message}</p>
         </Chip>
-      ): null}
+      ) : null}
     </div>
-
   );
 }
 
