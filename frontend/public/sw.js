@@ -6,4 +6,12 @@ self.addEventListener('fetch', (event) => {
       })
     );
   });
-  
+self.addEventListener('push', (event) => {
+  const payload = event.data.json();
+  const options = {
+    body: payload.notification.body,
+  };
+  event.waitUntil(
+    self.registration.showNotification(payload.notification.title, options)
+  );
+});

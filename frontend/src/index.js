@@ -1,19 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import 'firebase/messaging';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+
 require('dotenv').config();
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -25,13 +19,14 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const messaging = app.messaging();
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker
+    .register('/sw.js')
     .then((registration) => {
       console.log('Service Worker registered with scope:', registration.scope);
     })
@@ -39,4 +34,37 @@ if ('serviceWorker' in navigator) {
       console.error('Service Worker registration failed:', error);
     });
 }
+
+messaging
+  .requestPermission()
+  .then(() => {
+    console.log('Notification permission granted.');
+    return messaging.getToken();
+  })
+  .then((token) => {
+    console.log('FCM Token:', token);
+    // Send this token to your server for later use
+  })
+  .catch((error) => {
+    console.error('Unable to get permission to notify.', error);
+  });
+
+messaging.onMessage((payload) => {
+  console.log('Message received:', payload);
+  // Display a notification
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+const root = document.getElementById('root');
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
 reportWebVitals();
