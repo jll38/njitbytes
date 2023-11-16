@@ -35,19 +35,6 @@ export function Home({ quizStatus, setQuizStatus }) {
     }
   `;
 
-  useEffect(() => {
-    if (isMobile) {
-      document.documentElement.style.overflowY = "hidden";
-      document.body.style.overflowY = "hidden";
-
-      // Remove styles on component unmount
-      return () => {
-        document.documentElement.style.overflowY = "auto";
-        document.body.style.overflowY = "auto";
-      };
-    }
-  }, [isMobile]);
-
   return (
     <div
       style={{
