@@ -43,7 +43,7 @@ export function Settings({}) {
             className={`flex ${
               isMobile ? "flex-col items-center" : "items-center space-x-3"
             } mt-${isMobile ? 10 : 10} space-y-4`}
-            style={isMobile ? { marginTop: "3.5rem" } : { marginTop: "4.4rem" }}
+            style={isMobile ? {} : { marginTop: "4.4rem" }}
           >
             <Button
               variant="contained"
