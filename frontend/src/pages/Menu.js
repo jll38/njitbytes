@@ -3,7 +3,7 @@ import { Footer } from "../components/Footer";
 import { Logo } from "./../components/Logo";
 import axios from "axios";
 import React from "react";
-
+import Layout from "./Layout";
 import { Tabs, TabList, Tab, TabPanel } from "@mui/joy";
 import { useState, useEffect } from "react";
 import { getDailyCals } from "../utils/macros";
@@ -107,8 +107,6 @@ export function Menu({}) {
           </Tabs>
         </div>
       </div>
-
-      <Footer />
     </div>
   ) : (
     <div></div>

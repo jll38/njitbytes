@@ -37,9 +37,9 @@ export function Home({ quizStatus, setQuizStatus }) {
   return (
     <Layout>
       <div
-        className={`flex flex-col items-center ${
-          isMobile ? "justify-center" : "justify-start"
-        } h-screen max-h-screen mt-${isMobile ? 0 : 10}`}
+        className={`flex flex-col items-center justify-${
+          isMobile ? "center" : "start"
+        } mt-${isMobile ? 0 : 10}`}
         style={isMobile ? {} : { border: "100px solid transparent" }}
       >
         <Logo />
@@ -55,16 +55,25 @@ export function Home({ quizStatus, setQuizStatus }) {
                 </span>
               </span>
             </div>
-            <div className="text-lg mt-1">What would you like to do?</div>
+            <div
+              className="text-lg mt-1"
+              style={{
+                marginBottom: isMobile ? "10%" : "4%",
+                fontStyle: "italic",
+                textAlign: "center",
+              }}
+            >
+              "Stay hungry, stay foolish." <br /> - Steve Jobs
+            </div>
             <div
               className={`flex ${
                 isMobile ? "flex-col items-center" : "items-center space-x-3"
-              } mt-${isMobile ? 5 : 10} space-y-2`}
+              } mt-${isMobile ? 10 : 10} space-y-4`}
             >
               <Button
                 variant="contained"
                 style={{
-                  marginTop: "10px",
+                  marginTop: isMobile ? "" : "18px",
                   height: "10vh",
                   width: isMobile ? "70vw" : "50vw", // Adjusted width for desktop
                   maxWidth: isMobile ? "285px" : "350px",

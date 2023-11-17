@@ -2,11 +2,10 @@ import React from "react";
 import Form from "../components/questions/Form";
 import { Button, Box } from "@mui/joy";
 import { Logo } from "../components/Logo";
-import { Footer } from "../components/Footer";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import Layout from "./Layout";
 import { Menu } from "./Menu";
 
 export function Settings({}) {
@@ -15,41 +14,41 @@ export function Settings({}) {
     window.location.assign("/");
 
   return localStorage.getItem("byte_quizStatus") !== null ? (
-    <div
-      className={`flex flex-col items-center ${
-        isMobile ? "justify-center" : "justify-start"
-      } h-screen max-h-screen mt-${isMobile ? 0 : 10}`}
-      style={isMobile ? {} : { border: "100px solid transparent" }}
-    >
-      <Logo />
-
-      {
-        <div>
+    <Layout>
+      <div
+        className={`flex flex-col items-center justify-${
+          isMobile ? "center" : "start"
+        } mt-${isMobile ? 0 : 10}`}
+        style={isMobile ? {} : { border: "100px solid transparent" }}
+      >
+        <Logo />
+        <div className="text-center mt-2 w-90">
           <div
-            style={{
-              fontSize: "1.5rem",
-              textAlign: "center",
-              margin: "auto",
-              ...(isMobile ? { paddingTop: "5.5%" } : {paddingTop: "1.5%"}),
-            }}
+            className="text-2xl mt-2"
+            style={{ marginTop: isMobile ? "0.6rem" : "0.5rem" }}
           >
             📃Settings
           </div>
           <div
-            style={{ textAlign: "center", margin: "auto" }}
             className="text-lg mt-1"
+            style={{
+              marginBottom: isMobile ? "10%" : "4%",
+              fontStyle: "italic",
+              textAlign: "center",
+            }}
           >
-            What would you like to do?
+            {""} <br /> {""}
           </div>
           <div
             className={`flex ${
               isMobile ? "flex-col items-center" : "items-center space-x-3"
-            } mt-${isMobile ? 5 : 10} space-y-2`}
+            } mt-${isMobile ? 10 : 10} space-y-4`}
+            style={isMobile ? { marginTop: "3.5rem" } : { marginTop: "4.4rem" }}
           >
             <Button
               variant="contained"
               style={{
-                marginTop: "10px",
+                marginTop: isMobile ? "" : "18px",
                 height: "10vh",
                 width: isMobile ? "70vw" : "50vw", // Adjusted width for desktop
                 maxWidth: isMobile ? "285px" : "350px",
@@ -133,10 +132,8 @@ export function Settings({}) {
             </Button>
           </div>
         </div>
-      }
-
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   ) : (
     <></>
   );

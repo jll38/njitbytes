@@ -2,19 +2,23 @@ import React from "react";
 import { Footer } from "../components/Footer";
 
 const Layout = ({ children }) => {
+  const isMobile = window.innerWidth <= 600;
+  
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0 20px",
+        minHeight: "100vh",
+        padding: "20px",
+        boxSizing: "border-box",
+        overflow: "auto",
       }}
     >
       <div
+        id="content"
         style={{
-          maxWidth: "600px",
+          maxWidth: isMobile ? "100%" : "600px",
           width: "100%",
           margin: "auto",
         }}
@@ -25,5 +29,6 @@ const Layout = ({ children }) => {
     </div>
   );
 };
+
 
 export default Layout;
