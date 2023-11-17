@@ -49,7 +49,6 @@ export function Contributors() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: "90vh",
           justifyContent: "center",
           paddingBottom: "10%",
         }}
