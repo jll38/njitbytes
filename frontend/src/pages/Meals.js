@@ -7,6 +7,7 @@ import React from "react";
 import axios from "axios";
 import { Chart } from "react-google-charts";
 import Snackbar from "@mui/joy/Snackbar";
+import Layout from "./Layout";
 
 import {
   Tabs,
@@ -62,7 +63,7 @@ export function Meals({}) {
     fat: 0,
     carbs: 0,
   };
-
+  const isMobile = window.innerWidth <= 600;
   const loadingMessages = [
     "Thinking...",
     "Looking at the GDS menu...",
@@ -138,6 +139,17 @@ export function Meals({}) {
 
   const user = getInfo();
 
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Cycle through loading messages
+      setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
+    }, 9000); // Change the interval time as needed
+
+    return () => clearInterval(interval);
+  }, []);
+
   const getResponse = async (selection) => {
     setLoading(true);
     let menu;
@@ -158,7 +170,7 @@ export function Meals({}) {
           {
             role: "system",
             content:
-              'Generate a JSON object for a single meal plan. The JSON object should contain an array of no more than 4 ingredients for the meal, each with its nutritional information and number of servings you suggest in relation to other ingredients. If protein, carb, fat informaiton isn\'t provided, approximate. The JSON structure must follow this specific format without deviation: {"meal": [{"ingredient": {"name": "(fill)", "calories": "(fill)", "carbs": "(fill)", "protein": "(fill)", "fat": "(fill)", "serving size", "num_servings": "(fill)"}}]}',
+              'Generate a JSON object for a single meal plan. The JSON object should contain an array of no more than 4 ingredients for the meal, each with its nutritional information and number of servings you suggest in relation to other ingredients. If protein, carb, fat informaiton isnt provided, approximate. The JSON structure must follow this specific format without deviation: {"meal": [{"ingredient": {"name": "(fill)", "calories": "(fill)", "carbs": "(fill)", "protein": "(fill)", "fat": "(fill)", "serving size", "num_servings": "(fill)"}}]}',
           },
           {
             role: "user",
@@ -201,33 +213,94 @@ export function Meals({}) {
   });
 
   return localStorage.getItem("byte_quizStatus") !== null ? (
-    <div>
+    <div
+        className={`flex flex-col items-center justify-${
+          isMobile ? "center" : "start"
+        } `}
+      >
       <div className="p-[1rem] sm:p-[4rem] h-screen w-full flex flex-col items-center">
         <Logo />
-        <div className="mt-[5rem] w-full flex items-center gap-4 justify-center">
-          <Button
-            onClick={() => {
-              setResponseData(null);
-              getResponse("breakfast");
-            }}
-          >
-            Get Breakfast Meal
+        <div className="mt-[5rem] w-full flex items-center gap-4 justify-center" style={isMobile ? {  } : {maxWidth: "40vw"}}>
+        <Button
+                className="flex-grow"
+                variant="contained"
+                style={{
+                  marginTop: isMobile ? "" : "18px",
+                  height: "10vh",
+                  width: isMobile ? "70vw" : "70vw", // Adjusted width for desktop
+                  maxWidth: isMobile ? "285px" : "350px",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  transition: "transform 0.3s",
+                  marginBottom: "10px",
+                }}
+                onClick={() => {
+                  setResponseData(null);
+                  getResponse("breakfast");
+                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.transform = "translateY(-8px)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0)")
+                }
+              >
+            🤖<br/>Get Breakfast
           </Button>
           <Button
-            onClick={() => {
-              setResponseData(null);
-              getResponse("lunch");
-            }}
-          >
-            Get Lunch Meal
+                className="flex-grow"
+                variant="contained"
+                style={{
+                  marginTop: isMobile ? "" : "18px",
+                  height: "10vh",
+                  width: isMobile ? "70vw" : "70vw", // Adjusted width for desktop
+                  maxWidth: isMobile ? "285px" : "350px",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  transition: "transform 0.3s",
+                  marginBottom: "10px",
+                }}
+                onClick={() => {
+                  setResponseData(null);
+                  getResponse("lunch");
+                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.transform = "translateY(-8px)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0)")
+                }
+              >
+            🤖<br/>Get Lunch
           </Button>
           <Button
-            onClick={() => {
-              setResponseData(null);
-              getResponse("dinner");
-            }}
-          >
-            Get Dinner Meal
+                className="flex-grow"
+                variant="contained"
+                style={{
+                  marginTop: isMobile ? "" : "18px",
+                  height: "10vh",
+                  width: isMobile ? "70vw" : "70vw", // Adjusted width for desktop
+                  maxWidth: isMobile ? "285px" : "75vw",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  transition: "transform 0.3s",
+                  marginBottom: "10px",
+                }}
+                onClick={() => {
+                  setResponseData(null);
+                  getResponse("dinner");
+                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.transform = "translateY(-8px)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0)")
+                }
+              >
+            🤖<br/>Get Dinner
           </Button>
         </div>
         <div className="opacity-[50%]">
@@ -325,15 +398,13 @@ export function Meals({}) {
               </>
             )}
 
-            {loading && <div>Loading...</div>}
+            {loading && <div>{loadingMessages[currentMessageIndex]}</div>}
             {errorState && (
               <div className="text-destructive">X {errorState}</div>
             )}
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   ) : (
     <div></div>

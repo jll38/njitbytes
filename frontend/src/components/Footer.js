@@ -3,19 +3,20 @@ import React from "react";
 export function Footer() {
   return (
     <footer
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        textAlign: "center",
-        padding: "10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "14px",
-      }}
-    >
+  style={{
+    position: "relative",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    textAlign: "center",
+    padding: "10px",
+    margin: "10px 0", // Add margin to the top to create space under the footer
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "14px",
+  }}
+>
       <div style={{ margin: "0 10px" }}>
         {/* GitHub Link with Logo */}
         <a
@@ -30,7 +31,7 @@ export function Footer() {
           }}
         >
           <img
-            src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+            src='/images/github_logo.png'
             alt="GitHub Logo"
             style={{ width: "24px", height: "24px", marginRight: "0.4rem" }}
           />
