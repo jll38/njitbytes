@@ -303,8 +303,8 @@ export function Meals({}) {
             🤖<br/>Get Dinner
           </Button>
         </div>
-        <div className="opacity-[50%]">
-          * Calories and macros are adjusted by number of servings
+        <div className="opacity-[50%] italic" style={{textAlign: "center"}}>
+          Calories and macros are adjusted by number of servings
         </div>
         <div className="w-full flex justify-center p-[2em]">
           <div className="flex w-[75%] justify-around">
