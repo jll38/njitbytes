@@ -30,9 +30,8 @@ NJITBytes is a [hackathon-inspired](https://devpost.com/software/njit-bytes) app
 
 ## ✨ Features
 
-- Live menus for GDS breakfast, lunch, and dinner.
+- Easy-to-browse live menus for GDS breakfast, lunch, and dinner.
 - Personalized meal recommendations based on user information.
-- Easy-to-use API for retrieving menu information.
 
 ## 🛠️ Installation
 
@@ -53,8 +52,8 @@ To run the NJITBytes Frontend locally, follow these steps:
 
 ## 🌟 Usage
 
-- Access the live menus by visiting the respective endpoints.
-- Get personalized meal recommendations by providing user information.
+- Access the live menus by setting up your locally stored profile and clicking on the "view menus" button.
+- Get personalized meal recommendations by setting up your locally stored profile and clicking on the "AI Meal Prep" button.
 
 ## 🤝 Contributing
 
