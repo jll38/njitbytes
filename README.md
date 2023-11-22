@@ -66,5 +66,3 @@ NJITBytes is licensed under the [Creative Commons Attribution-NonCommercial 4.0 
 Stay tuned for updates and enjoy a personalized dining experience like never before with NJITBytes! 🍽️🎉
 
 
-
-
