@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Form from "../components/questions/Form";
-import { Button } from "@mui/joy";
 import { Logo } from "../components/Logo";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import SettingsIcon from "@mui/icons-material/Settings";
 import axios from "axios";
 import Layout from "./Layout";
 
@@ -49,7 +44,6 @@ export function Contributors() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: "90vh",
           justifyContent: "center",
           paddingBottom: "10%",
         }}
