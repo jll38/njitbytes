@@ -5,17 +5,15 @@ import { Settings } from "./pages/Settings";
 import { EditProfile } from "./pages/settings/edit-profile";
 import { FavoriteItemsPage } from "./pages/settings/FavoriteMenuItems";
 import { Contributors } from "./pages/Contributor";
+import { Play } from "./pages/Play";
 import { Meals } from "./pages/Meals";
-import logo from "./logo.svg";
 import "./App.scss";
 import { extendTheme, CssVarsProvider } from "@mui/joy/styles";
-import { Button } from "@mui/joy";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  //True is complete, False is incomplete
   const [quizStatus, setQuizStatus] = useState(
     localStorage.getItem("byte_quizStatus") !== null ? true : false
   );
@@ -73,6 +71,7 @@ function App() {
             <Route path="meals" element={<Meals />} />
             <Route path="caloric-information" element={<CaloricInfo />} />
             <Route path="contributors" element={<Contributors />} />
+            <Route path="play" element={<Play />} />
           </Route>
         </Routes>
       </BrowserRouter>
